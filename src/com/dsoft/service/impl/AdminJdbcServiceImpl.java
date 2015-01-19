@@ -19,4 +19,7 @@ public class AdminJdbcServiceImpl implements AdminJdbcService {
     private AdminJdbcDao adminJdbcDao;
 
 
+    public List getPartialDataList( int page, int rp , String qtype, String query, String sortname, String sortorder,String className) {
+        return  adminJdbcDao.getPartialDataList( page, rp ,qtype, query,   sortname,   sortorder,className);
+    }
 }

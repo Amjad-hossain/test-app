@@ -56,7 +56,10 @@
     <script src="<%= contextPath %>/resources/theme/js/vendor/bootstrap-editable.js"></script>             <!-- editable fields plugin -->
     <script src="<%= contextPath %>/resources/theme/js/thekamarel.min.js"></script>                            <!-- main project js file -->
 
+    <script src="<%= contextPath %>/resources/js/jquery.browser.min.js"  type="text/javascript"></script>
 
+    <script src="<%= contextPath %>/resources/flexigrid/js/flexigrid.js"  type="text/javascript"></script>
+    <link href='<%= contextPath %>/resources/flexigrid/css/flexigrid.css' rel='stylesheet' type='text/css'>
 
     <%--kamarel theme--%>
     <link rel="stylesheet" href="<%= contextPath %>/resources/theme/css/bootstrap-responsive.min.css">
@@ -66,12 +69,24 @@
 
 </head>
 <body id="ipboard_body" class="commonForm wysihtml5-supported">
-    <tiles:insertAttribute name="header"/>
-    <c:if test="${abacMessage != ''}">
-        <div id="inlineMsgDiv">${abacMessage}</div>
-    </c:if>
 
-    <tiles:insertAttribute name="body"/>
+    <tiles:insertAttribute name="header"/>
+    <tiles:insertAttribute name="mainMenu"/>
+
+    <!-- ==================== PAGE CONTENT ==================== -->
+    <div class="content">
+
+    <tiles:insertAttribute name="dashboard"/>
+
+        <!-- ==================== WIDGETS CONTAINER ==================== -->
+        <div class="container-fluid">
+
+        <tiles:insertAttribute name="body"/>
+
+        </div>
+        <!-- ==================== END OF WIDGETS CONTAINER ==================== -->
+    </div>
+    <!-- ==================== END OF PAGE CONTENT ==================== -->
 
     <%--<tiles:insertAttribute name="footer"/>--%>
 

@@ -7,10 +7,8 @@
         template="/WEB-INF/views/layout/layout.jsp">
 		<!-- <put-attribute name="title" value="" /> -->
         <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
-        <put-attribute name="adminHeader" value="/WEB-INF/views/layout/admin_header.jsp" />
+        <put-attribute name="mainMenu" value="/WEB-INF/views/layout/mainMenu.jsp" />
         <put-attribute name="dashboard" value="/WEB-INF/views/layout/dashBoardAndBreadcrumb.jsp" />
-        <put-attribute name="subHeader" value="/WEB-INF/views/layout/sub_header.jsp" />
-        <put-attribute name="landingPageMainTab" value="/WEB-INF/views/layout/landingPageMainTab.jsp" />
         <put-attribute name="message" value="/WEB-INF/views/message.jsp" />
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />

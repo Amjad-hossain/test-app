@@ -39,4 +39,9 @@ public class AdminServiceImpl implements AdminService {
     public List<User> getAllUserList(String userName) {
         return null;
     }
+
+    public   int getEntitySize(String entity){
+        return adminDao.getEntitySize(entity);
+
+    }
 }

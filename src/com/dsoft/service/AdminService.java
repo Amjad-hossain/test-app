@@ -12,5 +12,6 @@ public interface AdminService {
 
     List<User> getAllUserList();
     List<User> getAllUserList(String userName);
+    int getEntitySize(String entity);
 
 }

@@ -36,6 +36,29 @@ public class User extends AbstractBaseEntity {
     @Column(name = "user_type_id")
     private long userTypeId;
 
+    @Transient
+    private String givenPassword;
+    @Transient
+    private String confirmPassword;
+
+    @Transient
+    private String userActiveCheckBoxHtml;
+    @Transient
+    private String  userEditButtonHtml;
+    @Transient
+    private String userDeleteButtonHtml;
+
+    @Transient
+    private String personType;
+
+    @Transient
+    private String errorMessage;
+    @Transient
+    private String fieldName;
+
+    @Transient
+    private List<User> errorList;
+
     public String getUserName() {
         return userName;
     }
@@ -92,6 +115,78 @@ public class User extends AbstractBaseEntity {
         this.userTypeId = userTypeId;
     }
 
+    public String getGivenPassword() {
+        return givenPassword;
+    }
+
+    public void setGivenPassword(String givenPassword) {
+        this.givenPassword = givenPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getUserActiveCheckBoxHtml() {
+        return userActiveCheckBoxHtml;
+    }
+
+    public void setUserActiveCheckBoxHtml(String userActiveCheckBoxHtml) {
+        this.userActiveCheckBoxHtml = userActiveCheckBoxHtml;
+    }
+
+    public String getUserEditButtonHtml() {
+        return userEditButtonHtml;
+    }
+
+    public void setUserEditButtonHtml(String userEditButtonHtml) {
+        this.userEditButtonHtml = userEditButtonHtml;
+    }
+
+    public String getUserDeleteButtonHtml() {
+        return userDeleteButtonHtml;
+    }
+
+    public void setUserDeleteButtonHtml(String userDeleteButtonHtml) {
+        this.userDeleteButtonHtml = userDeleteButtonHtml;
+    }
+
+    public String getPersonType() {
+        return personType;
+    }
+
+    public void setPersonType(String personType) {
+        this.personType = personType;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public List<User> getErrorList() {
+        return errorList;
+    }
+
+    public void setErrorList(List<User> errorList) {
+        this.errorList = errorList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -102,6 +197,15 @@ public class User extends AbstractBaseEntity {
                 ", email='" + email + '\'' +
                 ", userType='" + userType + '\'' +
                 ", userTypeId=" + userTypeId +
+                ", givenPassword='" + givenPassword + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", userActiveCheckBoxHtml='" + userActiveCheckBoxHtml + '\'' +
+                ", userEditButtonHtml='" + userEditButtonHtml + '\'' +
+                ", userDeleteButtonHtml='" + userDeleteButtonHtml + '\'' +
+                ", personType='" + personType + '\'' +
+                ", errorMessage='" + errorMessage + '\'' +
+                ", fieldName='" + fieldName + '\'' +
+                ", errorList=" + errorList +
                 '}';
     }
 }

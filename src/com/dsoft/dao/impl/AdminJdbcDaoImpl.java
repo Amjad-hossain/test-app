@@ -89,5 +89,27 @@ public class AdminJdbcDaoImpl implements AdminJdbcDao {
         return jdbcTemplate.queryForList(sql);
     }
 */
+public List<Object> getPartialDataList(int page, int rp,  String qtype, String query, String sortname, String sortorder,String className) {
+    int start = (page - 1)*rp ;
+    String sql = "SELECT * "
+            + " FROM " + className;
+    if(!Utils.isEmpty(query)) {
+        sql +=  " WHERE "+ qtype+" LIKE ?  LIMIT ?, ? ";
+    } else {
+        sql +=  " ORDER BY " + sortname + " "+ sortorder +" LIMIT ?, ? ";
+    }
+
+    List paramList = new ArrayList();
+    if(!Utils.isEmpty(query)) {
+        paramList.add("%"+query+"%");
+    }
+    paramList.add(start);
+    paramList.add(rp);
+    List list = jdbcTemplate.queryForList(sql, paramList.toArray());
+
+    if (list != null && list.size() > 0)
+        return list;
+    return null;
+}
 
 }

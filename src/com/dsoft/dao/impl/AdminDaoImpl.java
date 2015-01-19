@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -36,5 +36,16 @@ public class AdminDaoImpl implements AdminDao {
     @Override
     public List<User> getAllUserList(String userName) {
         return null;
+    }
+
+    public   int getEntitySize(String entity){
+        List list = hibernateTemplate.find("Select count(*) From " + entity );
+
+        if (list != null && list.size() > 0)    {
+            return Integer.parseInt((list.get(0)).toString());
+
+        }
+        return 0;
+
     }
 }

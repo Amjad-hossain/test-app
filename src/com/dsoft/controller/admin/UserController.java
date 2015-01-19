@@ -1,6 +1,8 @@
 package com.dsoft.controller.admin;
 
 
+import com.dsoft.bean.Cell;
+import com.dsoft.bean.JasonBean;
 import com.dsoft.entity.*;
 import com.dsoft.service.AdminJdbcService;
 import com.dsoft.service.AdminService;
@@ -252,6 +254,7 @@ public class UserController {  // to handle user related task
     }
 
 
+
     @RequestMapping(value = "admin/getUser.html", method = RequestMethod.GET)
     public @ResponseBody
     User getControl(HttpServletRequest request,  @RequestParam("userId") long userId, Model model) {
@@ -276,5 +279,76 @@ public class UserController {  // to handle user related task
         }*/
         logger.info("Get user in ajax end.");
         return user;
+    }
+
+
+    /*
+       * Method for cancel buttons action
+       * @param User user, HttpServletRequest request
+       * @return type String
+       */
+    @RequestMapping(value = "/*/testAjaxCall.html", method = RequestMethod.POST)
+    public @ResponseBody String testAjaxCall(HttpServletRequest request) {
+        String referrer = request.getHeader("referer");
+        logger.debug("Refferer :"+referrer);
+        return "test ajax call:";
+    }
+
+    @RequestMapping(value = "/*/getUserJASON.html", method = RequestMethod.POST)
+    public  @ResponseBody
+    User getControlList(HttpServletRequest request) {
+        logger.debug("User JASON controller");
+        String  page = request.getParameter("page") != null ? request.getParameter("page") : "1";
+        String rp = request.getParameter("rp") != null ? request.getParameter("rp") : "10";
+        String sortname = request.getParameter("sortname") != null ? request.getParameter("sortname") : "assignment_size";
+        String sortorder = request.getParameter("sortorder") != null ? request.getParameter("sortorder") : "desc";
+        String query = request.getParameter("query") != null ? request.getParameter("query") : "false";
+        String qtype = request.getParameter("qtype") != null ? request.getParameter("qtype") : "false";
+        JasonBean jasonData = new JasonBean();
+
+        int totalItems = 0 ;
+        List<Cell> entry = new ArrayList<Cell>();
+        List userList = new ArrayList<User>();
+
+/*
+        try {
+
+            totalItems= adminService.getEntitySize(Constants.USER);
+            userList  = adminJdbcService.getPartialDataList( Utils.parseInteger(page), Utils.parseInteger(rp), qtype, query , sortname, sortorder, Constants.USER_TABLE);
+
+            if(userList != null) {
+                logger.debug("SMNLOG: userList:"+ userList.size()+" totalItems:"+totalItems);
+                jasonData.setPage(Utils.parseInteger(page));
+                for(Object obj : userList) {
+                    User user= new User();
+                    Cell cell = new Cell();
+                    Map map = (Map) obj;
+                    user.setUserName(map.get("user_name") != null ? map.get("user_name").toString() : "");
+                    user.setRole(map.get("role") != null ? map.get("role").toString() : "");
+                    if(map.get("is_active") != null && ("true".equals(map.get("is_active").toString().trim()))) {
+                        user.setUserActiveCheckBoxHtml(Utils.getMessageBundlePropertyValue("user.selected.checkbox.html"));
+                    } else {
+                        user.setUserActiveCheckBoxHtml(Utils.getMessageBundlePropertyValue("user.not.selected.checkbox.html"));
+                    }
+                    user.setUserEditButtonHtml(Utils.getMessageBundlePropertyValue("user.edit.button.html"));
+                    user.setUserDeleteButtonHtml(Utils.getMessageBundlePropertyValue("user.delete.button.html"));
+
+                    user.setId(map.get("id") != null ? ((Number)map.get("id")).intValue() : 0 );
+                    cell.setId(map.get("id") != null ? ((Number)map.get("id")).intValue() : 0 );
+
+                    cell.setCell(user);
+                    entry.add(cell);
+                }
+                jasonData.setRows(entry);
+                jasonData.setTotal(totalItems);
+            } else {
+                logger.debug("No User Found");
+            }
+        }catch (Exception ex) {
+            logger.debug("CERROR: Get User List Exception : " + ex);
+        }
+*/
+
+        return new User();
     }
 }

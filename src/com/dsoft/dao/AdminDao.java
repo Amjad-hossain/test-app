@@ -9,4 +9,5 @@ public interface AdminDao {
 
     List<User> getAllUserList();
     List<User> getAllUserList(String userName);
+    int getEntitySize(String entity);
 }
