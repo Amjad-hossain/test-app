@@ -12,5 +12,9 @@
         </c:if>
         </li>
     </c:forEach>
+    <li class="moveDown pull-right">
+        <span class="time">14:50:41</span>
+        <span class="date">Tuesday 20 January 2015</span>
+    </li>
 </ul>
 <!-- ==================== END OF BREADCRUMBS / DATETIME ==================== -->

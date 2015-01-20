@@ -8,20 +8,21 @@
 <%
     final String contextPath = request.getContextPath();
 %>
-<c:set var="admin" value="<%=Role.ADMIN.getLabel()%>"/>
-<c:set var="employee" value="<%=Role.EMPLOYEE.getLabel()%>"/>
-<c:set var="legal" value="<%=Role.LEGAL.getLabel()%>"/>
-<c:set var="ia_analyst" value="<%=Role.IA_ANALYST.getLabel()%>"/>
-<c:set var="ia_manager" value="<%=Role.IA_MANAGER.getLabel()%>"/>
-<c:set var="compliance" value="<%=Role.COMPLIANCE.getLabel()%>"/>
+<c:set var="admin" value="<%=Role.ADMIN.getLabel()%>" scope="session"/>
+<c:set var="employee" value="<%=Role.EMPLOYEE.getLabel()%>" scope="session"/>
+<c:set var="legal" value="<%=Role.LEGAL.getLabel()%>" scope="session"/>
+<c:set var="ia_analyst" value="<%=Role.IA_ANALYST.getLabel()%>" scope="session"/>
+<c:set var="ia_manager" value="<%=Role.IA_MANAGER.getLabel()%>" scope="session"/>
+<c:set var="compliance" value="<%=Role.COMPLIANCE.getLabel()%>" scope="session"/>
 
-<link rel="shortcut icon" type="image/x-icon" href="<%= contextPath %>/resources/images/new_logo.png" />
+
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<link rel="shortcut icon" type="image/x-icon" href="<%= contextPath %>/resources/images/new_logo.png" />
+<%--<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->--%>
 <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -66,6 +67,7 @@
     <link rel="stylesheet" href="<%= contextPath %>/resources/theme/css/styles.css">
 
 
+    <script src="<%= contextPath %>/resources/webcam/jquery.webcam.js"  type="text/javascript"></script>
 
 </head>
 <body id="ipboard_body" class="commonForm wysihtml5-supported">

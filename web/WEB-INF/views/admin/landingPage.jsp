@@ -9,15 +9,7 @@
     final String contextPath = request.getContextPath();
 %>
 
-<title><spring:message code="landingPage.transactionMonitoring" /></title>
-
-<c:set var="adminUser" value="<%=Role.ADMIN.getLabel()%>"/>
-<c:set var="employee" value="<%=Role.EMPLOYEE.getLabel()%>"/>
-<c:set var="legal_role" value="<%=Role.LEGAL.getLabel()%>"/>
-<c:set var="compliance_role" value="<%=Role.COMPLIANCE.getLabel()%>"/>
-<c:set var="ia_manager_role" value="<%=Role.IA_MANAGER.getLabel()%>"/>
-
-
+<title></title>
 
         <!-- ==================== COMMON ELEMENTS ROW ==================== -->
         <div class="row-fluid">

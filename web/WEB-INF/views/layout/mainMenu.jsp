@@ -13,18 +13,18 @@
       <li class="left-side" id="dashboard"><a href="index.html"><i class="icon-dashboard"></i> DASHBOARD</a></li>
       <li class="divider-vertical"></li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="formElements"><i class="icon-list"></i> FORMS <span class="label label-pressed">3</span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="formElements"><i class="icon-list"></i> Profiles<span class="label label-pressed">3</span></a>
         <ul class="dropdown-menu">
-          <li><a tabindex="-1" href="common-form.html">COMMON ELEMENTS</a></li>
+          <li><a tabindex="-1" href="./admin/studentProfileView.html">Students Profile</a></li>
           <li><a tabindex="-1" href="validation-form.html">VALIDATION</a></li>
           <li><a tabindex="-1" href="form-wizard.html">WIZARD</a></li>
         </ul>
       </li>
       <li class="divider-vertical"></li>
       <li class="dropdown active">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="interface"><i class="icon-pencil"></i> INTERFACE <span class="label label-pressed">2</span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="interface"><i class="icon-pencil"></i> Registration <span class="label label-pressed">2</span></a>
         <ul class="dropdown-menu">
-          <li><a href="interface.html">UI ELEMENTS</a></li>
+          <li><a href="./studentRegistration.html">Student Registration</a></li>
           <li><a tabindex="-1" href="typography.html">TYPOGRAPHY</a></li>
         </ul>
       </li>
