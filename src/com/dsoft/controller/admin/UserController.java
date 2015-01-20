@@ -288,15 +288,14 @@ public class UserController {  // to handle user related task
        * @return type String
        */
     @RequestMapping(value = "/*/testAjaxCall.html", method = RequestMethod.POST)
-    public @ResponseBody String testAjaxCall(HttpServletRequest request) {
+    public @ResponseBody User testAjaxCall(HttpServletRequest request) {
         String referrer = request.getHeader("referer");
         logger.debug("Refferer :"+referrer);
-        return "test ajax call:";
+        return new User();
     }
 
-    @RequestMapping(value = "/*/getUserJASON.html", method = RequestMethod.POST)
-    public  @ResponseBody
-    User getControlList(HttpServletRequest request) {
+    @RequestMapping(value = "/*/getUserJASON.html", method = RequestMethod.POST,produces = {"application/json"})
+    public @ResponseBody User getControlList(HttpServletRequest request) {
         logger.debug("User JASON controller");
         String  page = request.getParameter("page") != null ? request.getParameter("page") : "1";
         String rp = request.getParameter("rp") != null ? request.getParameter("rp") : "10";
@@ -310,7 +309,6 @@ public class UserController {  // to handle user related task
         List<Cell> entry = new ArrayList<Cell>();
         List userList = new ArrayList<User>();
 
-/*
         try {
 
             totalItems= adminService.getEntitySize(Constants.USER);
@@ -347,7 +345,6 @@ public class UserController {  // to handle user related task
         }catch (Exception ex) {
             logger.debug("CERROR: Get User List Exception : " + ex);
         }
-*/
 
         return new User();
     }
