@@ -36,6 +36,8 @@
         $.ajax({
             url: 'admin111/testAjaxCall.html',
             type: 'POST',
+            contentType: "application/json",
+            dataType: "json",
             success: function(data){
                 console.log("SMNLOG:"+data);
             }

@@ -1,64 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/mvc"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-             xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+			    http://www.springframework.org/schema/beans
+			    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			    http://www.springframework.org/schema/tx
+			    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+			    http://www.springframework.org/schema/context
+			    http://www.springframework.org/schema/context/spring-context-3.0.xsd ">
 
-    <!-- DispatcherServlet Context: defines this servlet's request-processing
-        infrastructure -->
     <context:property-placeholder location="/WEB-INF/configurations/properties/database.properties" />
 
-    <!-- Enables the Spring MVC @Controller programming model -->
-    <annotation-driven />
+    <!-- Declare a datasource that has pooling capabilities-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close"
+          p:driverClass="${db.driver.class.name}"
+          p:jdbcUrl="${db.conn.url}"
+          p:user="${db.username}"
+          p:password="${db.password}"
+          p:acquireIncrement="5"
+          p:idleConnectionTestPeriod="60"
+          p:maxPoolSize="100"
+          p:maxStatements="50"
+          p:minPoolSize="10"/>
 
-    <!-- Handles HTTP GET requests for /resources/** by efficiently serving
-        up static resources in the ${webappRoot}/resources directory -->
-    <!--<resources mapping="/resources/**" location="/resources/" />-->
+    <!-- Enable annotation style of managing transactions -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <!-- Resolves views selected for rendering by @Controllers to .jsp resources
-        in the /WEB-INF/views directory -->
-    <beans:bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <beans:property name="prefix" value="/WEB-INF/views/" />
-        <beans:property name="suffix" value=".jsp" />
-    </beans:bean>
+    <!-- Declare the Hibernate SessionFactory for retri.eving Hibernate sessions -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" lazy-init="false" >
+        <property name="dataSource" ref="dataSource" />
 
-    <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <beans:property name="driverClassName" value="${db.driver.class.name}" />
-        <beans:property name="url" value="${db.conn.url}" />
-        <beans:property name="username" value="${db.username}" />
-        <beans:property name="password" value="${db.password}" />
-    </beans:bean>
+        <property name="configurationClass">
+            <value>org.hibernate.cfg.AnnotationConfiguration</value>
+        </property>
 
-    <!-- Hibernate 4 SessionFactory Bean definition -->
-    <beans:bean id="hibernate4AnnotatedSessionFactory"
-                class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <beans:property name="dataSource" ref="dataSource" />
-        <beans:property name="packagesToScan">
-            <beans:list>
-                <beans:value>com.dsoft.entity</beans:value>
-            </beans:list>
-        </beans:property>
-        <beans:property name="hibernateProperties">
-            <beans:props>
-                <beans:prop key="hibernate.dialect">${db.dialect}</beans:prop>
-                <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
-                <beans:prop key="hibernate.show_sql">true</beans:prop>
-            </beans:props>
-        </beans:property>
-    </beans:bean>
+        <property name="packagesToScan">
+            <list>
+                <value>com.dsoft.entity</value>
+            </list>
+        </property>
 
-    <context:component-scan base-package="com.dsoft.entity" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">${db.dialect}</prop>
+                <prop key="hibernate.validator.apply_to_ddl">true</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+                <prop key="javax.persistence.validation.mode">NONE</prop>
+                <!--<prop key="hibernate.validator.autoregister_listeners">false</prop>-->
+            </props>
+        </property>
+    </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!-- Declare a transaction manager-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" lazy-init="true" >
+        <property name="dataSource" ref="dataSource" />
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
 
-    <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-    </beans:bean>
+    <!-- JDBC Datasource -->
+    <!--  <bean id="jdbcDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+            <property name="driverClassName" value="${db.driver.class.name}"/>
+            <property name="url" value="${db.conn.url}"/>
+            <property name="username" value="${db.username}"/>
+            <property name="password" value="${db.password}"/>
+      </bean>-->
+    <!--
+          <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="${db.driver.class.name}"/>
+            <property name="url" value="${db.conn.url}"/>
+            <property name="username" value="${db.username}"/>
+            <property name="password" value="${db.password}"/>
+      </bean>-->
+    <bean id="jdbcDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db.driver.class.name}"/>
+        <property name="url" value="${db.conn.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
 
-
-</beans:beans>
-
+</beans>
