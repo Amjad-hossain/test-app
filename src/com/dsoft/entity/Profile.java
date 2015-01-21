@@ -6,9 +6,6 @@ import javax.persistence.*;
  * Created by amjad on 20/1/15.
  */
 
-
-public class Profile {
-
 @Entity
 @Table(name="profile")
 public class Profile{
@@ -58,23 +55,21 @@ public class Profile{
     @Column(name = "email")
     private String email;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public long getId() {
         return id;
     }
-    private String lastName;
-
-    private Long age;
-
-    private String fathersName;
-
-    private String mothersName;
-
-
 
     public void setId(long id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;
@@ -172,7 +167,6 @@ public class Profile{
         this.photoName = photoName;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -184,7 +178,8 @@ public class Profile{
     @Override
     public String toString() {
         return "Profile{" +
-                "id=" + id +
+                "firstName='" + firstName + '\'' +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 ", fatherName='" + fatherName + '\'' +
                 ", motherName='" + motherName + '\'' +

@@ -180,8 +180,12 @@
                 }, this), 750);
             },
             onCapture: function () {
-                webcam.save();
                 console.log("capturing...");
+                webcam.save();
+                jQuery('body').css("display", "block");
+                jQuery("body").fadeOut(100, function () {
+                    jQuery("body").css("opacity", 1);
+                });
             },
 
             debug: function (type, string) {
@@ -201,8 +205,9 @@
 
             e.preventDefault();
             console.log("SMNLOG:taking a photo.......");
-            var api = webcam;//$('#webcam').data('webcam');
+            var api = $('#webcam').data('webcam');
             var result = api.save();
+            console.log("SMNLOG:api:"+api);
             if (result && result.length) {
                 var shotResolution = api.getResolution();
                 var img = new Image();

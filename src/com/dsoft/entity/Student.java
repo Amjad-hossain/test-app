@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Table(name="student")
 public class Student extends AbstractBaseEntity {
 
-public class Student {
-    
 
     @ManyToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="standard_id")
@@ -46,5 +44,14 @@ public class Student {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "standard=" + standard +
+                ", boardRegistrationNo='" + boardRegistrationNo + '\'' +
+                ", profile=" + profile +
+                '}';
     }
 }
