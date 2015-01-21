@@ -25,7 +25,20 @@
 
 
                 <!-- ==================== TEXT INPUTS FLOATING BOX ==================== -->
-                <div id="webcam"></div>
+
+                <div class ="span4 pull-right" style="border: 1px solid black;">
+                    <div id="webcam">
+
+                    </div>
+                    <div id="result">
+
+                    </div>
+
+                    <div style="text-align: center;padding-top: 5px;">
+                    <button id="popup-webcam-take-photo" class="btn btn-mini btn-primary" type="button">Take picture</button>
+                    <button id="" class="btn btn-mini btn-danger" type="button">Cancel</button>
+                     </div>
+                </div>
 
                 <div class="floatingBox">
                     <div class="container-fluid">
@@ -165,6 +178,14 @@
                             .prop('disabled', false)
                             .show();
                 }, this), 750);
+            },
+            onCapture: function () {
+                webcam.save();
+                console.log("capturing...");
+            },
+
+            debug: function (type, string) {
+                console.log(type + ": " + string);
             }
         });
         $('#popup-webcam-cams').change(function() {
@@ -177,8 +198,10 @@
             }
         });
         $('#popup-webcam-take-photo').click(function(e) {
+
             e.preventDefault();
-            var api = $('#webcam').data('webcam');
+            console.log("SMNLOG:taking a photo.......");
+            var api = webcam;//$('#webcam').data('webcam');
             var result = api.save();
             if (result && result.length) {
                 var shotResolution = api.getResolution();
@@ -194,41 +217,4 @@
         });
     });
 </script>
-<%--
-<script>
-    $(document).ready(function(){
-    jQuery("#webcam").webcam({
-        width: 320,
-        height: 240,
-        mode: "callback",
-        swffile: "/jscam_canvas_only.swf", // canvas only doesn't implement a jpeg encoder, so the file is much smaller
-        onTick: function(remain) {
-            if (0 == remain) {
-                jQuery("#status").text("Cheese!");
-            } else {
-                jQuery("#status").text(remain + " seconds remaining...");
-            }
-        },
-        onSave: function(data) {
-            var col = data.split(";");
-            // Work with the picture. Picture-data is encoded as an array of arrays... Not really nice, though =/
-        },
-        onCapture: function () {
-            webcam.save();
-            // Show a flash for example
-        },
-        debug: function (type, string) {
-            // Write debug information to console.log() or a div, ...
-        },
-        onLoad: function () {
-            // Page load
-            var cams = webcam.getCameraList();
-            for(var i in cams) {
-                jQuery("#cams").append("<li>" + cams[i] + "</li>");
-            }
-        }
-    });
-    });
 
-
-</script>--%>

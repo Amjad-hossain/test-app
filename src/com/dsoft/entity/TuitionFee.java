@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="tuition_fee")
-public class TuitionFee extends AbstractBaseEntity{
+public class TuitionFee extends AbstractBaseEntity {
 
     @Column(name = "payment_date")
     private Date paymentDate;
@@ -59,16 +59,5 @@ public class TuitionFee extends AbstractBaseEntity{
 
     public void setDueAmount(Long dueAmount) {
         this.dueAmount = dueAmount;
-    }
-public class TuitionFee {
-
-    private Student student;
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 }

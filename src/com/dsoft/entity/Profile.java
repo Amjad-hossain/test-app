@@ -187,15 +187,4 @@ public class Profile{
                 ", email='" + email + '\'' +
                 '}';
     }
-public class Profile {
-
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

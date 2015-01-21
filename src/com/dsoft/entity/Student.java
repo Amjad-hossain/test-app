@@ -17,8 +17,8 @@ public class Student extends AbstractBaseEntity {
     private String boardRegistrationNo;
 
     @ManyToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="tuition_fee_id")
-    private TuitionFee tuitionFee;
+    @JoinColumn(name="profile_id")
+    private Profile profile;
 
 
     public Standard getStandard() {
@@ -35,26 +35,6 @@ public class Student extends AbstractBaseEntity {
 
     public void setBoardRegistrationNo(String boardRegistrationNo) {
         this.boardRegistrationNo = boardRegistrationNo;
-    }
-
-    public TuitionFee getTuitionFee() {
-        return tuitionFee;
-    }
-
-    public void setTuitionFee(TuitionFee tuitionFee) {
-        this.tuitionFee = tuitionFee;
-    }
-public class Student {
-
-    private String studentId;
-    private Profile profile;
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
     }
 
     public Profile getProfile() {

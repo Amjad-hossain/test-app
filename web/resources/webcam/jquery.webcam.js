@@ -18,7 +18,7 @@
 
 	"mode": "callback", // callback | save | stream
 
-	"swffile": "jscam.swf",
+	"swffile": "../resources/webcam/jscam.swf",
 	"quality": 85,
 
 	"debug":	function () {},

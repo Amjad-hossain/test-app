@@ -254,37 +254,37 @@
         </div>
         <ul class="messagesList">
             <li class="unreaded">
-                <div class="messageAvatar"><img src="<%= contextPath %>/resources/kamarel/img/rimmer-avatar.jpg" alt=""></div>
+                <div class="messageAvatar"><img src="<%= contextPath %>/resources/theme/img/rimmer-avatar.jpg" alt=""></div>
                 <h3>Arnold Karlsberg</h3>
                 <span class="messageDate">05.03.2013 17:55 <span class="pull-right messageStatus">unreaded</span></span>
                 <div class="messageContent">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad..."</div>
             </li>
             <li class="unreaded">
-                <div class="messageAvatar"><img src="<%= contextPath %>/resources/kamarel/img/homer-avatar.jpg" alt=""></div>
+                <div class="messageAvatar"><img src="<%= contextPath %>/resources/theme/img/homer-avatar.jpg" alt=""></div>
                 <h3>John Doe</h3>
                 <span class="messageDate">05.03.2013 17:55 <span class="pull-right messageStatus">unreaded</span></span>
                 <div class="messageContent">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad..."</div>
             </li>
             <li class="unreaded">
-                <div class="messageAvatar"><img src="<%= contextPath %>/resources/kamarel/img/peter-avatar.jpg" alt=""></div>
+                <div class="messageAvatar"><img src="<%= contextPath %>/resources/theme/img/peter-avatar.jpg" alt=""></div>
                 <h3>Peter Kay</h3>
                 <span class="messageDate">05.03.2013 17:55 <span class="pull-right messageStatus">unreaded</span></span>
                 <div class="messageContent">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad..."</div>
             </li>
             <li class="unreaded">
-                <div class="messageAvatar"><img src="<%= contextPath %>/resources/kamarel/img/zoidberg-avatar.jpg" alt=""></div>
+                <div class="messageAvatar"><img src="<%= contextPath %>/resources/theme/img/zoidberg-avatar.jpg" alt=""></div>
                 <h3>George McCain</h3>
                 <span class="messageDate">05.03.2013 17:55 <span class="pull-right messageStatus">unreaded</span></span>
                 <div class="messageContent">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad..."</div>
             </li>
             <li class="unreaded">
-                <div class="messageAvatar"><img src="<%= contextPath %>/resources/kamarel/img/peter-avatar.jpg" alt=""></div>
+                <div class="messageAvatar"><img src="<%= contextPath %>/resources/theme/img/peter-avatar.jpg" alt=""></div>
                 <h3>Peter Kay</h3>
                 <span class="messageDate">05.03.2013 17:55 <span class="pull-right messageStatus">unreaded</span></span>
                 <div class="messageContent">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad..."</div>
             </li>
             <li class="unreaded">
-                <div class="messageAvatar"><img src="<%= contextPath %>/resources/kamarel/img/rimmer-avatar.jpg" alt=""></div>
+                <div class="messageAvatar"><img src="<%= contextPath %>/resources/theme/img/rimmer-avatar.jpg" alt=""></div>
                 <h3>Arnold Karlsberg</h3>
                 <span class="messageDate">05.03.2013 17:55 <span class="pull-right messageStatus">unreaded</span></span>
                 <div class="messageContent">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad..."</div>
