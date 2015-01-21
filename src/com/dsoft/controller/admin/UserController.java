@@ -29,12 +29,16 @@ import java.util.*;
 public class UserController {  // to handle user related task
 
     private static Logger logger = Logger.getLogger(UserController.class);
+
     @Autowired(required = true)
     private AdminService adminService;
+
     @Autowired(required = true)
     private UserValidation userValidation;
+
     @Autowired(required = true)
     private AdminJdbcService adminJdbcService;
+
     @Autowired
     private MessageSource messageSource;
 
@@ -97,9 +101,9 @@ public class UserController {  // to handle user related task
         List employeeList = new ArrayList();
         try {
             userList = adminService.getAllUserList();   // load userList by Hibernate
-//            employeeList = adminJdbcService.getEmployeeWithNonUserList();
-            if(employeeList != null)
-                logger.debug("SMN LOG: " +employeeList.size() );
+            if(userList != null)
+                logger.debug("SMN LOG: " +userList.size() );
+            logger.debug("AMLOG: " +userList);
         } catch ( Exception ex) {
             logger.debug("User Controller Exception :" + ex);
         }

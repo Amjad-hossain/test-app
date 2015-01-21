@@ -1,5 +1,7 @@
 package com.dsoft.service;
 
+import com.dsoft.entity.Profile;
+import com.dsoft.entity.Student;
 import com.dsoft.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,4 +16,9 @@ public interface AdminService {
     List<User> getAllUserList(String userName);
     int getEntitySize(String entity);
 
+    List<Student> getAllStudent() throws Exception;
+
+    Student getStudent(String studentId) throws Exception;
+
+    void saveStudent(Student profile) throws Exception;
 }
