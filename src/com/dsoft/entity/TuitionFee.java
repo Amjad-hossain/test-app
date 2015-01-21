@@ -9,6 +9,11 @@ import java.util.Date;
  * Created by amjad on 20/1/15.
  */
 
+
+public class TuitionFee {
+
+    private Student student;
+
 @Entity
 @Table(name="tuition_fee")
 public class TuitionFee extends AbstractBaseEntity {

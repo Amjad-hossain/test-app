@@ -6,9 +6,13 @@ import javax.persistence.*;
  * Created by amjad on 20/1/15.
  */
 
+
+public class Profile {
+
 @Entity
 @Table(name="profile")
 public class Profile{
+    private String firstName;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,6 +61,15 @@ public class Profile{
     public long getId() {
         return id;
     }
+    private String lastName;
+
+    private Long age;
+
+    private String fathersName;
+
+    private String mothersName;
+
+
 
     public void setId(long id) {
         this.id = id;

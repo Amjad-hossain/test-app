@@ -9,6 +9,9 @@ import javax.persistence.*;
 @Table(name="student")
 public class Student extends AbstractBaseEntity {
 
+public class Student {
+    
+
     @ManyToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="standard_id")
     private Standard standard;
