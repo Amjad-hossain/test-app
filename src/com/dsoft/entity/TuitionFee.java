@@ -60,4 +60,15 @@ public class TuitionFee extends AbstractBaseEntity{
     public void setDueAmount(Long dueAmount) {
         this.dueAmount = dueAmount;
     }
+public class TuitionFee {
+
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }

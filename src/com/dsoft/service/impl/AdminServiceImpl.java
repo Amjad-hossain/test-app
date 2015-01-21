@@ -1,20 +1,13 @@
 package com.dsoft.service.impl;
 
 import com.dsoft.dao.AdminDao;
+import com.dsoft.entity.Student;
 import com.dsoft.entity.User;
 import com.dsoft.service.AdminService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service("adminService")
@@ -25,14 +18,9 @@ public class AdminServiceImpl implements AdminService {
     private AdminDao adminDao;
 
     @Override
-	@Transactional(readOnly = true)
     public List<User> getAllUserList() {
 
-        List<User> userList = adminDao.getAllUserList();
-        if (userList != null && userList.size() > 0) {
-            return userList;
-        }
-        return null;
+      return adminDao.getAllUserList();
     }
 
     @Override
@@ -44,4 +32,21 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.getEntitySize(entity);
 
     }
+
+    @Override
+    public List<Student> getAllStudent() throws Exception {
+        return adminDao.getAllStudent();
+    }
+
+    @Override
+    public Student getStudent(String studentId) throws Exception {
+        return adminDao.getStudent(studentId);
+    }
+
+    @Override
+    public void saveStudent(Student student) throws Exception {
+        adminDao.saveStudent(student);
+    }
+
+
 }

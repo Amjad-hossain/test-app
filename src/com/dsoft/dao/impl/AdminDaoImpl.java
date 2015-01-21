@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 
 @Repository
+@Transactional
 public class AdminDaoImpl implements AdminDao {
     private static Logger logger = Logger.getLogger(AdminDaoImpl.class);
 
@@ -30,7 +32,7 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public List<User> getAllUserList() {
-        return null;
+        return hibernateTemplate.find("FROM User" );
     }
 
     @Override
@@ -47,5 +49,25 @@ public class AdminDaoImpl implements AdminDao {
         }
         return 0;
 
+    }
+
+    @Override
+    public List<Student> getAllStudent() throws Exception {
+        return hibernateTemplate.find("FROM Student" );
+    }
+
+    @Override
+    public Student getStudent(String studentId) throws Exception {
+        return hibernateTemplate.load(Student.class, studentId);
+    }
+
+    @Override
+    public void saveStudent(Student student) throws Exception {
+
+        if(student.getProfile() != null){
+
+            hibernateTemplate.save(student.getProfile());
+        }
+        hibernateTemplate.save(student);
     }
 }
