@@ -3,7 +3,9 @@ package com.dsoft.entity;
 /**
  * Created by amjad on 20/1/15.
  */
+
 public class Student {
+    
 
     private String studentId;
     private Profile profile;

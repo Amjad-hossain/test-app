@@ -3,15 +3,20 @@ package com.dsoft.entity;
 /**
  * Created by amjad on 20/1/15.
  */
+
+
 public class Profile {
 
-    private Long id;
+    private String firstName;
 
-    public Long getId() {
-        return id;
-    }
+    private String lastName;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Long age;
+
+    private String fathersName;
+
+    private String mothersName;
+
+
+
 }
