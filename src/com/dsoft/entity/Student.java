@@ -1,5 +1,7 @@
 package com.dsoft.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 
 /**
@@ -21,6 +23,11 @@ public class Student extends AbstractBaseEntity {
     @JoinColumn(name="profile_id")
     private Profile profile;
 
+    /*@Transient
+    private MultipartFile fileData;*/
+
+    @Transient
+    private String binaryFileData;
 
     public Standard getStandard() {
         return standard;
@@ -46,12 +53,30 @@ public class Student extends AbstractBaseEntity {
         this.profile = profile;
     }
 
+    /*public MultipartFile getFileData() {
+        return fileData;
+    }
+
+    public void setFileData(MultipartFile fileData) {
+        this.fileData = fileData;
+    }*/
+
+    public String getBinaryFileData() {
+        return binaryFileData;
+    }
+
+    public void setBinaryFileData(String binaryFileData) {
+        this.binaryFileData = binaryFileData;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "standard=" + standard +
                 ", boardRegistrationNo='" + boardRegistrationNo + '\'' +
                 ", profile=" + profile +
+//                ", fileData=" + fileData +
+                ", binaryFileData='" + binaryFileData + '\'' +
                 '}';
     }
 }

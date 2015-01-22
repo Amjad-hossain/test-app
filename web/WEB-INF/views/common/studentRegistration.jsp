@@ -1,10 +1,8 @@
-<%@ page import="com.dsoft.entity.Role" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ page pageEncoding="UTF-8" %>
+
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <%
     final String contextPath = request.getContextPath();
 %>
@@ -26,46 +24,45 @@
 
                 <!-- ==================== TEXT INPUTS FLOATING BOX ==================== -->
 
-                <div class ="span4 pull-right" style="border: 1px solid black;">
+                <div class ="span4 pull-right webCamWrapper">
+
                     <div id="webcam">
 
                     </div>
-                    <div id="result">
-
-                    </div>
+                    <%--<canvas id="canvas" height="240" width="320"></canvas>--%>
 
                     <div style="text-align: center;padding-top: 5px;">
                     <button id="popup-webcam-take-photo" class="btn btn-mini btn-primary" type="button">Take picture</button>
-                    <button id="" class="btn btn-mini btn-danger" type="button">Cancel</button>
                      </div>
                 </div>
 
                 <div class="floatingBox">
                     <div class="container-fluid">
                         <div class="span8">
+                        <dynamic-attributes>true</dynamic-attributes>
 
-
-
-                        <form data-validate="parsley" class="form-horizontal">
+                        <form:form method="post" action="" cssClass="form-horizontal" commandName="student">
+                            <%--<form:input path="profile.name" cssClass="span10 parsley-validated"/>--%>
                             <div class="control-group">
                                 <label for="fullname" class="control-label">Full Name *</label>
                                 <div class="controls">
-                                    <input type="text" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" name="fullname" id="fullname" class="span10 parsley-validated">
+                                    <form:input path="profile.name" cssClass="span10 parsley-validated"/>
+                                    <%--<form:input path="name" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" cssClass="span10 parsley-validated"/>--%>
                                 </div>
                             </div>
-                             <div class="control-group">
-                                <label for="fullname" class="control-label"><spring:message code="form.fathers.name" /> *</label>
+                             <%--<div class="control-group">
+                                <label for="fName" class="control-label"><spring:message code="form.fathers.name" /> *</label>
                                 <div class="controls">
-                                    <input type="text" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" name="fullname" id="fName" class="span10 parsley-validated">
+                                    <form:input path="profile.fatherName" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" id="fName" cssClass="span10 parsley-validated"/>
                                 </div>
                             </div>
                              <div class="control-group">
-                                <label for="fullname" class="control-label"><spring:message code="form.mothers.name" /> *</label>
+                                <label for="mName" class="control-label"><spring:message code="form.mothers.name" /> *</label>
                                 <div class="controls">
-                                    <input type="text" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" name="fullname" id="mName" class="span10 parsley-validated">
+                                    <form:input path="profile.motherName" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" id="mName" cssClass="span10 parsley-validated"/>
                                 </div>
-                            </div>
-                             <div class="control-group">
+                            </div>--%>
+                            <%-- <div class="control-group">
                                 <label for="fullname" class="control-label">Class Name *</label>
                                 <div class="controls">
                                     <input type="text" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" name="fullname" id="fullname" class="span10 parsley-validated">
@@ -130,12 +127,14 @@
                                 <div class="controls">
                                     <input type="text" placeholder="YYYY-MM-DD" class="span10 parsley-validated parsley-error" data-required="true" data-trigger="change" data-type="dateIso" id="date" name="date"><ul id="parsley-535313013068583" class="parsley-error-list" style="display: block;"><li class="type" style="display: list-item;">This value should be a valid date (YYYY-MM-DD).</li><li class="required" style="display: list-item;">This value is required.</li></ul>
                                 </div>
-                            </div>
+                            </div>--%>
+                            <%--<form:input id="file" path="fileData" cssStyle="display:block;" />--%>
+                            <form:input id="file2" path="binaryFileData"/>
                             <div class="formFooter">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                                 <button class="btn" type="reset">Reset</button>
                             </div>
-                        </form>
+                        </form:form>
                         </div>
                     </div>
                 <!-- ==================== END OF TEXT INPUTS FLOATING BOX ==================== -->
@@ -144,54 +143,79 @@
         </div>
         <!-- ==================== END OF COMMON ELEMENTS ROW ==================== -->
 
+<div id="flash" style="height: 100px;"></div>
+
 <script type="text/javascript">
     $(function() {
-        console.log("SMNLOG:i am here...");
-        $('#webcam').webcam({
-            noCameraFound: function () {
-                this.debug('error', 'Web camera is not available');
-            },
-            error: function(e) {
-                this.debug('error', 'Internal camera plugin error');
-            },
-            cameraDisabled: function () {
-                this.debug('error', 'Please allow access to your camera');
-            },
-            debug: function(type, string) {
-                if (type == 'error') {
-                    $(".webcam-error").html(string);
+        var pos = 0, ctx = null;
+        var c=document.createElement("canvas");
+        var ctx=c.getContext("2d");
+        var frameWidth = parseInt(280);
+        var frameHeight = parseInt(240);
+        var img=ctx.createImageData(frameWidth,frameHeight);
+
+//        var img=ctx.createImageData(320,240);
+        c.setAttribute('width', frameWidth);
+        c.setAttribute('height', frameHeight);
+
+
+        jQuery("#webcam").webcam({
+
+            width: frameWidth,
+            height: frameHeight,
+            mode: "callback",
+//            swffile: "../resources/webcam/jscam.swf",
+            swffile: "../resources/webcam/jscam_canvas_only.swf",
+
+            onTick: function(remain) {
+
+                if (0 == remain) {
+                    console.log("Cheese!");
                 } else {
-                    $(".webcam-error").html('');
+                    console.log(remain + " seconds remaining...");
                 }
             },
-            cameraEnabled: function () {
-                this.debug('notice', 'Camera enabled');
-                if (this.isCameraEnabled) return;
-                this.isCameraEnabled = true;
-                $('#popup-webcam-cams')
-                        .append($.map(this.getCameraList(), function(cam, i) {
-                            return '<option value="' + i + '">' + cam + '</option>';
-                        }).join(''));
-                setTimeout($.proxy(function() {
-                    this.setCamera('0');
-                    $('#popup-webcam-take-photo')
-                            .prop('disabled', false)
-                            .show();
-                }, this), 750);
+
+            onSave: function(data) {
+                var col = data.split(";");
+                for (var i=0;i<frameWidth;i++){
+                    var tmp = parseInt(col[i]);
+                    img.data[pos+0]=(tmp >> 16) & 0xff;
+                    img.data[pos+1]=(tmp >> 8) & 0xff;
+                    img.data[pos+2]=tmp & 0xff;
+                    img.data[pos+3]=0xff;
+                    pos+= 4;
+                }
+
+                if (pos >= 4 * frameWidth * frameHeight) {
+                    ctx.putImageData(img, 0, 0);
+                    pos = 0;
+                }
             },
+
             onCapture: function () {
-                console.log("capturing...");
-                webcam.save();
-                jQuery('body').css("display", "block");
-                jQuery("body").fadeOut(100, function () {
-                    jQuery("body").css("opacity", 1);
+                jQuery("#flash").css("display", "block");
+                jQuery("#flash").fadeOut("fast", function () {
+                    jQuery("#flash").css("opacity", 1);
                 });
+
+                webcam.save();
+                $(".webCamWrapper").append(c);
             },
 
             debug: function (type, string) {
                 console.log(type + ": " + string);
+            },
+
+            onLoad: function () {
+
+                var cams = webcam.getCameraList();
+                for(var i in cams) {
+                    jQuery("#cams").append("<li>" + cams[i] + "</li>");
+                }
             }
         });
+
         $('#popup-webcam-cams').change(function() {
             var $cam = $('#webcam');
             var success = $cam.webcam('setCamera', $(this).val());
@@ -202,23 +226,9 @@
             }
         });
         $('#popup-webcam-take-photo').click(function(e) {
-
-            e.preventDefault();
-            console.log("SMNLOG:taking a photo.......");
-            var api = $('#webcam').data('webcam');
-            var result = api.save();
-            console.log("SMNLOG:api:"+api);
-            if (result && result.length) {
-                var shotResolution = api.getResolution();
-                var img = new Image();
-                img.src = 'data:image/jpeg;base64,' + result;
-                $('#result').append(img);
-                alert('base64encoded jpeg (' + shotResolution[0] + 'x' + shotResolution[1] + '): ' + result.length + 'chars');
-                /* resume camera capture */
-                api.setCamera($('#popup-webcam-cams').val());
-            } else {
-                api.debug('error', 'Broken camera');
-            }
+            webcam.capture();
+            $(c).insertAfter($("#webcam"));
+            $("#file2").val(($(".webCamWrapper").find('canvas')[0].toDataURL("image/png").replace("data:image/png;base64,", "")));
         });
     });
 </script>
