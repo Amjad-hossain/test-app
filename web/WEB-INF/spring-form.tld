@@ -2051,4 +2051,5 @@
             <description>Specifies the HTML element that is used to enclose each 'input' tag with type 'checkbox'.  Defaults to 'span'.</description>
         </attribute>
     </tag>
+
 </taglib>

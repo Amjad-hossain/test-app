@@ -65,9 +65,11 @@
     <%--kamarel theme--%>
     <link rel="stylesheet" href="<%= contextPath %>/resources/theme/css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="<%= contextPath %>/resources/theme/css/styles.css">
+    <link rel="stylesheet" href="<%= contextPath %>/resources/styles/customStyle.css">
 
 
     <script src="<%= contextPath %>/resources/webcam/jquery.webcam.js"  type="text/javascript"></script>
+    <script src="<%= contextPath %>/resources/js/base64.js"  type="text/javascript"></script>
 
 </head>
 <body id="ipboard_body" class="commonForm wysihtml5-supported">
