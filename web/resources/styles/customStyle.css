@@ -5,3 +5,57 @@
     border:2px solid #ccc;
     border-radius: 5px;
 }
+
+/*
+
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {
+    color: #3fad46
+}
+
+.has-success .form-control {
+    border-color: #3fad46;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+}
+
+.has-success .form-control:focus {
+    border-color: #318837;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #81d186;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #81d186
+}
+
+.has-success .input-group-addon {
+    color: #3fad46;
+    border-color: #3fad46;
+    background-color: #dff0d8
+}
+
+.has-success .form-control-feedback {
+    color: #3fad46
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
+    color: #d9534f
+}
+
+.has-error .form-control {
+    border-color: #d9534f;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+}
+
+.has-error .form-control:focus {
+    border-color: #c9302c;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #eba5a3
+}
+
+.has-error .input-group-addon {
+    color: #d9534f;
+    border-color: #d9534f;
+    background-color: #f2dede
+}
+
+.has-error .form-control-feedback {
+    color: #d9534f
+}*/

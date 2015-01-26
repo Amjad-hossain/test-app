@@ -130,7 +130,7 @@ public class StudentController {  // to handle user related task
                 bis.close();*/
 
                 byte[] btDataFile = new sun.misc.BASE64Decoder().decodeBuffer(student.getBinaryFileData());
-                File of = new File(uploadPathForStudents+"_"+student.getProfile().getName()+"11.jpg");
+                File of = new File(uploadPathForStudents+"_"+student.getProfile().getName()+".png");
                 FileOutputStream osf = new FileOutputStream(of);
                 osf.write(btDataFile);
                 osf.flush();

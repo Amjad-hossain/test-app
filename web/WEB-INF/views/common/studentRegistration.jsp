@@ -7,6 +7,8 @@
     final String contextPath = request.getContextPath();
 %>
 
+<script src="<%= contextPath %>/resources/webcam/jquery.webcam.js"  type="text/javascript"></script>
+
 <title><spring:message code="student.profile.view" /></title>
 
         <!-- ==================== COMMON ELEMENTS ROW ==================== -->
@@ -39,17 +41,21 @@
                 <div class="floatingBox">
                     <div class="container-fluid">
                         <div class="span8">
-                        <dynamic-attributes>true</dynamic-attributes>
 
-                        <form:form method="post" action="" cssClass="form-horizontal" commandName="student">
+
+                        <%--<form id="studentForm" method="post" action="" class="form-horizontal parsley-validated" >--%>
+                            <form id="studentForm" method="post" action=""  class="form-horizontal contentForm" data-validate="parsley">
                             <%--<form:input path="profile.name" cssClass="span10 parsley-validated"/>--%>
                             <div class="control-group">
-                                <label for="fullname" class="control-label">Full Name *</label>
+                                <label class="control-label">Full Name *</label>
                                 <div class="controls">
-                                    <form:input path="profile.name" cssClass="span10 parsley-validated"/>
+                                    <input name="profile.name" class="span10 parsley-validated" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0"/>
                                     <%--<form:input path="name" data-minlength="4" data-required="true" data-trigger="change" data-validation-minlength="0" cssClass="span10 parsley-validated"/>--%>
                                 </div>
                             </div>
+
+                                <div class='form-group'><input name="jobName" class="form-control" /></div>
+
                              <%--<div class="control-group">
                                 <label for="fName" class="control-label"><spring:message code="form.fathers.name" /> *</label>
                                 <div class="controls">
@@ -129,12 +135,12 @@
                                 </div>
                             </div>--%>
                             <%--<form:input id="file" path="fileData" cssStyle="display:block;" />--%>
-                            <form:input id="file2" path="binaryFileData"/>
+                            <%--<form:input id="file2" path="binaryFileData"/>--%>
                             <div class="formFooter">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                                 <button class="btn" type="reset">Reset</button>
                             </div>
-                        </form:form>
+                        </form>
                         </div>
                     </div>
                 <!-- ==================== END OF TEXT INPUTS FLOATING BOX ==================== -->
@@ -230,6 +236,27 @@
             $(c).insertAfter($("#webcam"));
             $("#file2").val(($(".webCamWrapper").find('canvas')[0].toDataURL("image/png").replace("data:image/png;base64,", "")));
         });
+
+        /* initial form validation declaration */
+        console.log('initiliaze validation....')
+        function studentFormValidation() {
+            $("#studentForm").bootstrapValidator({
+
+                fields: {
+                    'jobName': {
+                        validators: {
+                            notEmpty: {
+                                message: "not empty"
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+//        studentFormValidation();
     });
+
+
 </script>
 
