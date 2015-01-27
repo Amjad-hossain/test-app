@@ -51,7 +51,7 @@
     <%--<script src="<%= contextPath %>/resources/theme/js/vendor/bootstrap-multiselect.js"></script>              <!-- multiselect plugin -->--%>
     <%--<script src="<%= contextPath %>/resources/theme/js/vendor/bootstrap-datepicker.js"></script>               <!-- datepicker plugin -->--%>
     <%--<script src="<%= contextPath %>/resources/theme/js/vendor/bootstrap-colorpicker.js"></script>              <!-- colorpicker plugin -->--%>
-    <script src="<%= contextPath %>/resources/theme/js/vendor/parsley.min.js"></script>                        <!-- parsley validator plugin -->
+    <script src="<%= contextPath %>/resources/theme/js/vendor/parsley.js"></script>                        <!-- parsley validator plugin -->
     <%--<script src="<%= contextPath %>/resources/theme/js/vendor/formToWizard.js"></script>                       <!-- form wizard plugin -->--%>
 
     <script src="<%= contextPath %>/resources/theme/js/vendor/bootstrap.js"></script>
@@ -71,7 +71,7 @@
 
     <%-- bootstrap validation --%>
     <%--<script src="<%= contextPath %>/resources/js/validation/bootstrapValidator.min.js"  type="text/javascript"></script>--%>
-
+    <script src="<%= contextPath %>/resources/js/common/util.js"  type="text/javascript"></script>
 
 </head>
 <body id="ipboard_body" class="commonForm wysihtml5-supported">
@@ -86,7 +86,7 @@
 
         <!-- ==================== WIDGETS CONTAINER ==================== -->
         <div class="container-fluid">
-
+            <%@ include file="/WEB-INF/views/message.jsp" %>
         <tiles:insertAttribute name="body"/>
 
         </div>

@@ -3,6 +3,7 @@ package com.dsoft.entity;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by amjad on 20/1/15.
@@ -12,7 +13,7 @@ import javax.persistence.*;
 public class Student extends AbstractBaseEntity {
 
 
-    @ManyToOne(cascade={CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name="standard_id")
     private Standard standard;
 
@@ -28,6 +29,9 @@ public class Student extends AbstractBaseEntity {
 
     @Transient
     private String binaryFileData;
+
+    @Transient
+    private List<Standard> standardList;
 
     public Standard getStandard() {
         return standard;
@@ -53,13 +57,13 @@ public class Student extends AbstractBaseEntity {
         this.profile = profile;
     }
 
-    /*public MultipartFile getFileData() {
-        return fileData;
+    public List<Standard> getStandardList() {
+        return standardList;
     }
 
-    public void setFileData(MultipartFile fileData) {
-        this.fileData = fileData;
-    }*/
+    public void setStandardList(List<Standard> standardList) {
+        this.standardList = standardList;
+    }
 
     public String getBinaryFileData() {
         return binaryFileData;

@@ -70,4 +70,15 @@ public class AdminDaoImpl implements AdminDao {
         }
         hibernateTemplate.save(student);
     }
+
+    @Override
+    public List<Standard> getAllStandardList() throws Exception {
+        List list = hibernateTemplate.find("From Standard");
+
+        if (list != null && list.size() > 0)    {
+            return list;
+
+        }
+        return null;
+    }
 }

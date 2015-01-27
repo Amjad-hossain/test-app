@@ -1,6 +1,7 @@
 package com.dsoft.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by amjad on 20/1/15.
@@ -54,6 +55,12 @@ public class Profile{
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
+
+    @Transient
+    private String binaryFileData;
 
     public String getFirstName() {
         return firstName;
@@ -175,6 +182,22 @@ public class Profile{
         this.email = email;
     }
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getBinaryFileData() {
+        return binaryFileData;
+    }
+
+    public void setBinaryFileData(String binaryFileData) {
+        this.binaryFileData = binaryFileData;
+    }
+
     @Override
     public String toString() {
         return "Profile{" +
@@ -193,6 +216,8 @@ public class Profile{
                 ", photoPath='" + photoPath + '\'' +
                 ", photoName='" + photoName + '\'' +
                 ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", binaryFileData='" + binaryFileData + '\'' +
                 '}';
     }
 }

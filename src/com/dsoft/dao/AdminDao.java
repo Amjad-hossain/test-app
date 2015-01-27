@@ -1,6 +1,7 @@
 package com.dsoft.dao;
 
 import com.dsoft.entity.Profile;
+import com.dsoft.entity.Standard;
 import com.dsoft.entity.Student;
 import com.dsoft.entity.User;
 
@@ -18,4 +19,6 @@ public interface AdminDao {
     Student getStudent(String studentId) throws Exception;
 
     void saveStudent(Student student) throws Exception;
+
+    List<Standard> getAllStandardList() throws Exception;
 }

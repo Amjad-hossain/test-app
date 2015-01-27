@@ -16,7 +16,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="formElements"><i class="icon-list"></i> Profiles<span class="label label-pressed">3</span></a>
         <ul class="dropdown-menu">
           <li><a tabindex="-1" href="./admin/studentProfileView.html">Students Profile</a></li>
-          <li><a tabindex="-1" href="validation-form.html">VALIDATION</a></li>
+          <li><a tabindex="-1" href="./admin/studentProfileList.html">Students</a></li>
           <li><a tabindex="-1" href="form-wizard.html">WIZARD</a></li>
         </ul>
       </li>

@@ -1,6 +1,7 @@
 package com.dsoft.service.impl;
 
 import com.dsoft.dao.AdminDao;
+import com.dsoft.entity.Standard;
 import com.dsoft.entity.Student;
 import com.dsoft.entity.User;
 import com.dsoft.service.AdminService;
@@ -48,5 +49,9 @@ public class AdminServiceImpl implements AdminService {
         adminDao.saveStudent(student);
     }
 
+    @Override
+    public List<Standard> getAllStandardList() throws Exception {
+        return adminDao.getAllStandardList();
+    }
 
 }

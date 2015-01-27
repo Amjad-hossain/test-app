@@ -1,8 +1,6 @@
 package com.dsoft.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by amjad on 20/1/15.
@@ -10,7 +8,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "standard")
-public class Standard extends AbstractBaseEntity{
+public class Standard{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -18,6 +21,16 @@ public class Standard extends AbstractBaseEntity{
     @Column(name = "code")
     private String code;
 
+    @Column(name = "section")
+    private String section;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -35,11 +48,21 @@ public class Standard extends AbstractBaseEntity{
         this.code = code;
     }
 
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
     @Override
     public String toString() {
         return "Standard{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
+                ", section='" + section + '\'' +
                 '}';
     }
 }
