@@ -1,4 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Context path="/testApp/">
-</Context>
+<!--<Context path="/testApp/">
+</Context>-->
 
+<Context path="/test-app" docBase="/home/amjad/test-app/build">
+</Context>

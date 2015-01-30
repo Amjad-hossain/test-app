@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <project name="test-app" default="compile" basedir=".">
 
     <property name="app.name"      value="test-app"/>
@@ -7,10 +8,10 @@
     <property name="catalina.home" value="/usr/tomcat7"/> <!-- UPDATE THIS! -->
     <property name="dist.home"     value="${basedir}/dist"/>
     <property name="docs.home"     value="${basedir}/dist/docs"/>
-    <property name="manager.url"   value="http://localhost:8080/manager"/>
+    <property name="manager.url"   value="http://localhost:8080/manager/text"/>
     <property name="src.home"      value="${basedir}/src"/>
     <property name="web.home"      value="${basedir}/web"/>
-    <property name="manager.username"      value="tomcat"/>
+    <property name="manager.username"      value="deploymgr"/>
     <property name="manager.password"      value="s3cret"/>
 
 
@@ -102,16 +103,47 @@
 
     </target>
 
-    <target name="install" depends="compile"
+    <target name="install" depends="compile, prepare"
             description="Install application to servlet container">
+
+
+        <mkdir  dir="${build.home}/WEB-INF/lib"/>
+        <copy    todir="${build.home}/WEB-INF/lib">
+            <fileset dir="${basedir}/lib"/>
+        </copy>
 
         <deploy url="${manager.url}"
                 username="${manager.username}"
                 password="${manager.password}"
                 path="${app.path}"
-                localWar="${build.home}"/>
+                localwar="file://${build.home}"/>
 
     </target>
+
+    <target name="manager.deploy" depends="compile, prepare"
+            description="Install application to servlet container">
+
+
+        <mkdir  dir="${build.home}/WEB-INF/lib"/>
+        <copy    todir="${build.home}/WEB-INF/lib">
+            <fileset dir="${basedir}/lib"/>
+        </copy>
+
+        <deploy url="${manager.url}"
+                username="${manager.username}"
+                password="${manager.password}"
+                path="${app.path}"
+                config="file://${build.home}/META-INF"/>
+
+    </target>
+
+    <!--
+      <mkdir  dir="${build.home}/WEB-INF/lib"/>
+        <copy    todir="${build.home}/WEB-INF/lib">
+            <fileset dir="${basedir}/lib"/>
+        </copy>
+
+    -->
 
     <target name="list"
             description="List installed applications on servlet container">
@@ -119,6 +151,56 @@
         <list    url="${manager.url}"
                  username="${manager.username}"
                  password="${manager.password}"/>
+
+    </target>
+
+    <target name="prepare">
+
+        <!-- Create build directories as needed -->
+        <mkdir  dir="${build.home}"/>
+        <mkdir  dir="${build.home}/WEB-INF"/>
+        <mkdir  dir="${build.home}/WEB-INF/classes"/>
+
+        <!-- Copy static content of this web application -->
+        <copy todir="${build.home}">
+            <fileset dir="${web.home}"/>
+        </copy>
+
+        <!-- Copy external dependencies as required -->
+        <!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** -->
+
+        <!-- Copy static files from external dependencies as needed -->
+        <!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** -->
+
+    </target>
+
+
+    <target name="reload" depends="compile"
+            description="Reload application on servlet container">
+
+        <reload url="${manager.url}"
+                username="${manager.username}"
+                password="${manager.password}"
+                path="${app.path}"/>
+
+    </target>
+
+    <target name="remove"
+            description="Remove application on servlet container">
+
+        <undeploy url="${manager.url}"
+                  username="${manager.username}"
+                  password="${manager.password}"
+                  path="${app.path}"/>
+
+    </target>
+
+    <target name="lite-reload" depends="compile" description="Reload application in Tomcat">
+
+        <reload   url="${manager.url}"
+                  username="${manager.username}"
+                  password="${manager.password}"
+                  path="${app.path}"/>
 
     </target>
 
