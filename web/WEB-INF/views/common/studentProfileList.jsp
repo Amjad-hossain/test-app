@@ -8,16 +8,9 @@
 <%
     final String contextPath = request.getContextPath();
 %>
+<script type="text/javascript" src="<%= contextPath %>/resources/js/common/student-list.js"></script>
 
-<title id='Description'>jqxChart Pie Series Example</title>
-<link rel="stylesheet" href="<%= contextPath %>/resources/jqwidgets/styles/jqx.base.css" type="text/css" />
-<script type="text/javascript" src="<%= contextPath %>/resources/jqwidgets/jqxcore.js"></script>
-<script type="text/javascript" src="<%= contextPath %>/resources/jqwidgets/jqxdraw.js"></script>
-<script type="text/javascript" src="<%= contextPath %>/resources/jqwidgets/jqxchart.core.js"></script>
-<%--<script type="text/javascript" src="<%= contextPath %>/resources/jqwidgets/jqxgauge.js"></script>--%>
-<script type="text/javascript" src="<%= contextPath %>/resources/jqwidgets/jqxdata.js"></script>
-
-<title><spring:message code="student.profile.view" /></title>
+<title><spring:message code="student.list" /></title>
 
         <!-- ==================== COMMON ELEMENTS ROW ==================== -->
         <div class="row-fluid">
@@ -32,17 +25,15 @@
                 <!-- ==================== END OF ACTIVITIES HEADLINE ==================== -->
 
                 <!-- ==================== ACTIVITIES FLOATING BOX ==================== -->
-               <%-- <div class="floatingBox">
+                <div class="floatingBox">
                     <div class="container-fluid">
 
-                        <div id="transactionSearchBlockId" class="centerAlign">
+                        <div id="searchBlockId" class="centerAlign">
                             <div class="searchParameterDiv">
-                                <form:form id="trxSearchForm" commandName="GlobalTransactionSearch" method="post"
-                                           action="transactionSearch.html?param=1" data-validate="parsley">
+                                <%--<form id="trxSearchForm" commandName="GlobalTransactionSearch" method="post" action="" >
                                     <table id="trxSearch">
                                         <tr>
-                                            <td><spring:message
-                                                    code="newRiskAssessmentSummary.transactionID"/> :
+                                            <td><spring:message code="newRiskAssessmentSummary.transactionID"/> :
                                             </td>
                                             <td><form:input path="transactionId"
                                                             id="transactionId" type="text"
@@ -58,86 +49,17 @@
                                                             id="nameOfThirdParty"
                                                             class=" leftPaddingForText" type="text"/></td>
                                         </tr>
-                                        <tr>
-                                            <td><spring:message code="newRiskAssessmentSummary.amount"/>
-                                                :
-                                            </td>
-                                            <td><form:input path="amount" id="amount"
-                                                            placeholder="must be a number"
-                                                            class=" leftPaddingForText"
-                                                            data-trigger="change"
-                                                            data-type="number"
-                                                            data-validation-minlength="0"/>
-
-                                            <td><spring:message code="newRiskAssessmentSummary.date"/> : </td>
-                                            <td><form:input path="transactionDate"
-                                                            id="transactionDate"
-                                                            class=" leftPaddingForText" type="text"/>
-                                                <form:errors path="transactionDate"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><spring:message code="globalSearch.typeOfTransaction"/>: </td>
-                                            <td>
-                                                <div class="styled-select">
-                                                    <form:select path="transactionType" id="transactionType">
-                                                        <form:option value="" label="Select transaction type"/>
-                                                        <form:options items="${transactionTypeList}" itemLabel="value"
-                                                                      itemValue="value"/>
-                                                    </form:select>
-                                                </div>
-                                            </td>
-                                            <td><spring:message code="globalSearch.approverName"/> :</td>
-                                            <td><form:input path="approver" id="approver"
-                                                            class=" leftPaddingForText" type="text"
-                                                            data-trigger="change"/></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><spring:message code="globalSearch.freeText"/> :</td>
-                                            <td ><form:input path="freeText" id="freeText"
-                                                             class=" leftPaddingForText" type="text"
-                                                             data-trigger="change"/></td>
-                                            <td colspan="2"><button id="trxSearchSubmitButton" type="button"
-                                                                    class="btn btn-primary"><spring:message code="search"/></button>
-                                            </td>
-                                        </tr>
                                     </table>
-                                </form:form>
-                                &lt;%&ndash; </div>
-                             </div>&ndash;%&gt;
+                                </form>--%>
                                 <!-- ==================== END OF TEXT INPUTS FLOATING BOX ==================== -->
                             </div>
                         </div>
-
-
-                        <div class="span12 leftMarginZero">
-
-                            <!-- ==================== SPAN12 HEADLINE ==================== -->
-                            <div class="containerHeadline">
-                                <i class="icon-th"></i>
-
-                                <h2></h2>
-
-                                <div class="controlButton pull-right">&lt;%&ndash;<i class="icon-remove removeElement"></i>&ndash;%&gt;</div>
-                                <div class="controlButton pull-right"><i class="icon-caret-down minimizeElement"></i></div>
-                            </div>
-                            <!-- ==================== END OF SPAN12 HEADLINE ==================== -->
-
-                            <!-- ==================== SPAN12 FLOATING BOX ==================== -->
-                            <div class="floatingBox">
-                                <div class="container-fluid">
-                                    <div class="customFlexigridCss">
-                                        <table id="transactionSearchTable">
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ==================== END OF SPAN12 FLOATING BOX ==================== -->
-
+                        <div class="customFlexigridCss">
+                            <table id="studentListTable">
+                            </table>
                         </div>
                     </div>
-                </div>--%>
+                </div>
                 <!-- ==================== END OF ACTIVITIES FLOATING BOX ==================== -->
             </div>
 

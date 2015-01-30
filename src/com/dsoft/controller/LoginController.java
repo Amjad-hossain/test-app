@@ -36,7 +36,7 @@ public class LoginController {  // to handle login related task
     * @param @RequestParam(value = "error", required = false) String error, HttpServletRequest request, Model model
     * @return type String
     */
-    @RequestMapping(value = "/login.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/*/login.html", method = RequestMethod.GET)
     public String redirectLogin(@RequestParam(value = "error", required = false) String error, HttpServletRequest request, Model model) {
         if (!Utils.isNullOrEmpty(error)) {
             model.addAttribute("error", Utils.getMessageBundlePropertyValue("login.error"));
@@ -75,7 +75,7 @@ public class LoginController {  // to handle login related task
         } else {
             return "redirect:/login.html";
         }*/
-        return "redirect:/login.html";
+        return "redirect:/admin/login.html";
     }
 
     /*

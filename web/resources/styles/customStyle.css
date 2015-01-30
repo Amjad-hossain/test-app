@@ -16,3 +16,40 @@
     margin-left: 0px !important;
 
 }
+.customFlexigridCss select{
+    /*background-color : transparent;*/
+    broder : not ;
+    width : auto;
+}
+.customFlexigridCss select, input[type="file"]{
+    /*height: auto;*/
+    line-height: normal;
+}
+.customFlexigridCss select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+
+    display: inline ;
+    font-size: medium;
+
+    padding: 0;
+    /*background: transparent;*/
+    border-radius: 4px;
+    vertical-align: baseline;
+    box-shadow: none;
+    /*height: auto;*/
+    line-height: normal;
+
+}
+
+.customFlexigridCss input,.customFlexigridCss button,.customFlexigridCss select,.customFlexigridCss textarea {
+    font-family:not specified;
+}
+
+.customFlexigridCss select{
+    margin-bottom: 0px !important;
+}
+.customFlexigridCss input[type="text"]   {
+    margin-top: 3px !important;
+}
+.customFlexigridCss  .sDiv2 select , .customFlexigridCss  .pGroup select {
+    height: 20px;
+}

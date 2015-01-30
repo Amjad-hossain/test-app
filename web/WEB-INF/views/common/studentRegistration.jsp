@@ -49,21 +49,21 @@
                             <div class="control-group">
                                 <label class="control-label">Full Name *</label>
                                 <div class="controls">
-                                    <%--<input name="profile.name" id="name" class="span10"/>--%>
-                                    <form:input path="profile.name" cssClass="span10"/>
+                                    <%--<input name="name" id="name" class="span10"/>--%>
+                                    <form:input path="name" cssClass="span10"/>
                                 </div>
                             </div>
 
                              <div class="control-group">
                                 <label class="control-label"><spring:message code="form.fathers.name" /> *</label>
                                 <div class="controls">
-                                    <form:input path="profile.fatherName" cssClass="span10"/>
+                                    <form:input path="fatherName" cssClass="span10"/>
                                 </div>
                             </div>
                              <div class="control-group">
                                 <label class="control-label"><spring:message code="form.mothers.name" /> *</label>
                                 <div class="controls">
-                                    <form:input path="profile.motherName" cssClass="span10 parsley-validated"/>
+                                    <form:input path="motherName" cssClass="span10 parsley-validated"/>
                                 </div>
                             </div>
                              <div class="control-group">
@@ -78,40 +78,40 @@
                              <div class="control-group">
                                 <label class="control-label"><spring:message code="form.villOrHouse" /> *</label>
                                 <div class="controls">
-                                    <form:input path="profile.villageOrArea" cssClass="span10 parsley-validated"/>
+                                    <form:input path="villageOrArea" cssClass="span10 parsley-validated"/>
                                 </div>
                             </div>
                              <div class="control-group">
                                 <label class="control-label"><spring:message code="form.district" /> *</label>
                                 <div class="controls">
-                                    <form:input path="profile.district" cssClass="span10 parsley-validated" />
+                                    <form:input path="district" cssClass="span10 parsley-validated" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label"><spring:message code="form.thana" /> *</label>
                                 <div class="controls">
-                                    <form:input path="profile.thana" cssClass="span10 parsley-validated"/>
+                                    <form:input path="thana" cssClass="span10 parsley-validated"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label"><spring:message code="form.postOffice" /> *</label>
                                 <div class="controls">
-                                    <form:input path="profile.postOffice" cssClass="span10 parsley-validated"/>
+                                    <form:input path="postOffice" cssClass="span10 parsley-validated"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label"><spring:message code="form.email" /> </label>
                                 <div class="controls">
-                                    <form:input path="profile.email" cssClass="span10 parsley-validated"/>
+                                    <form:input path="email" cssClass="span10 parsley-validated"/>
                                 </div>
                             </div>
                             <div class="control-group last">
                                 <label class="control-label"><spring:message code="form.dateOfBirth" /> *</label>
                                 <div class="controls">
-                                    <form:input path="profile.dateOfBirth" cssClass="span10 " id="dateOfBirth" />
+                                    <form:input path="dateOfBirth" cssClass="span10 " id="dateOfBirth" />
                                 </div>
                             </div>
-                            <form:hidden path="profile.binaryFileData" id="binaryFileData"/>
+                            <form:hidden path="binaryFileData" id="binaryFileData"/>
                             <div class="formFooter">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                                 <button class="btn" type="reset">Reset</button>

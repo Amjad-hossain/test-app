@@ -7,15 +7,9 @@ import java.util.Date;
  * Created by amjad on 20/1/15.
  */
 
-@Entity
-@Table(name="profile")
-public class Profile{
-    private String firstName;
+@MappedSuperclass
+public abstract class Profile extends AbstractBaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private long id;
 
     @Column(name = "name")
     private String name;
@@ -44,9 +38,6 @@ public class Profile{
     @Column(name = "district")
     private String district;
 
-    @Column(name = "role_no")
-    private String roleNo;
-
     @Column(name = "photo_path")
     private String photoPath;
 
@@ -61,22 +52,6 @@ public class Profile{
 
     @Transient
     private String binaryFileData;
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -150,14 +125,6 @@ public class Profile{
         this.district = district;
     }
 
-    public String getRoleNo() {
-        return roleNo;
-    }
-
-    public void setRoleNo(String roleNo) {
-        this.roleNo = roleNo;
-    }
-
     public String getPhotoPath() {
         return photoPath;
     }
@@ -201,9 +168,7 @@ public class Profile{
     @Override
     public String toString() {
         return "Profile{" +
-                "firstName='" + firstName + '\'' +
-                ", id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", fatherName='" + fatherName + '\'' +
                 ", motherName='" + motherName + '\'' +
                 ", houseNo='" + houseNo + '\'' +
@@ -212,7 +177,6 @@ public class Profile{
                 ", postCode='" + postCode + '\'' +
                 ", thana='" + thana + '\'' +
                 ", district='" + district + '\'' +
-                ", roleNo='" + roleNo + '\'' +
                 ", photoPath='" + photoPath + '\'' +
                 ", photoName='" + photoName + '\'' +
                 ", email='" + email + '\'' +

@@ -1,11 +1,15 @@
 package com.dsoft.controller.admin;
 
 
+import com.dsoft.bean.Cell;
+import com.dsoft.bean.JasonBean;
 import com.dsoft.entity.Profile;
 import com.dsoft.entity.Standard;
 import com.dsoft.entity.Student;
+import com.dsoft.entity.User;
 import com.dsoft.service.AdminJdbcService;
 import com.dsoft.service.AdminService;
+import com.dsoft.util.Constants;
 import com.dsoft.util.Utils;
 import com.dsoft.validation.UserValidation;
 import org.apache.commons.codec.binary.Base64;
@@ -28,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @SessionAttributes("user")
@@ -96,11 +101,10 @@ public class StudentController {  // to handle user related task
         } catch (Exception e) {
             logger.debug("ERROR:"+e);
         }
-        Profile profile = new Profile();
-        profile.setDistrict("Dhaka");
-        profile.setThana("Banani");
-        profile.setPostOffice("Banani-postoffice");
-        student.setProfile(profile);
+
+        student.setDistrict("Dhaka");
+        student.setThana("Banani");
+        student.setPostOffice("Banani-postoffice");
         student.setStandardList(standardList);
         model.addAttribute("student",student);
         return "common/studentRegistration";
@@ -120,24 +124,24 @@ public class StudentController {  // to handle user related task
         String uploadPath = "uploadFiles";
         String uploadFolderForStudents= "studentPhoto";
 
-        String uploadPathForStudents = (System.getProperty("user.home") + File.separator + uploadPath + File.separator + uploadFolderForStudents + File.separator + "" + Utils.getTodaysDate().getTime()+"_"+student.getProfile().getName()+".png");
+        String uploadPathForStudents = (System.getProperty("user.home") + File.separator + uploadPath + File.separator + uploadFolderForStudents + File.separator + "" + Utils.getTodaysDate().getTime()+"_"+student.getName()+".png");
         File dirForStudentsPhoto = new File(System.getProperty("user.home") + File.separator + uploadPath + File.separator + uploadFolderForStudents);
         try {
             if (!dirForStudentsPhoto.exists()) {
                 dirForStudentsPhoto.mkdirs();
             }
-            logger.debug("Image writting start... to file:"+student.getProfile().getBinaryFileData());
+            logger.debug("Image writting start... to file:"+student.getBinaryFileData());
             BufferedImage image = null;
             byte[] imageByte;
 
-                byte[] btDataFile = new sun.misc.BASE64Decoder().decodeBuffer(student.getProfile().getBinaryFileData());
+                byte[] btDataFile = new sun.misc.BASE64Decoder().decodeBuffer(student.getBinaryFileData());
                 File of = new File(uploadPathForStudents);
                 FileOutputStream osf = new FileOutputStream(of);
                 osf.write(btDataFile);
                 osf.flush();
 
             logger.debug("Image write complete....");
-            student.getProfile().setPhotoPath(uploadPathForStudents);
+            student.setPhotoPath(uploadPathForStudents);
             adminService.saveStudent(student);
             Utils.setGreenMessage(request, Utils.getMessageBundlePropertyValue("student.save.success.msg"));
         } catch (Exception ex) {
@@ -149,5 +153,70 @@ public class StudentController {  // to handle user related task
         return "common/studentRegistration";
     }
 
+    @RequestMapping(value = "/*/getStudentJSON.html", method = RequestMethod.POST)
+    public @ResponseBody
+    JasonBean getControlList(HttpServletRequest request) {
+        logger.debug("Student cccccccc JSON controller");
+        String  page = request.getParameter("page") != null ? request.getParameter("page") : "1";
+        String rp = request.getParameter("rp") != null ? request.getParameter("rp") : "10";
+        String sortname = request.getParameter("sortname") != null ? request.getParameter("sortname") : "assignment_size";
+        String sortorder = request.getParameter("sortorder") != null ? request.getParameter("sortorder") : "desc";
+        String query = request.getParameter("query") != null ? request.getParameter("query") : "false";
+        String qtype = request.getParameter("qtype") != null ? request.getParameter("qtype") : "false";
+        JasonBean jasonData = new JasonBean();
+
+        int totalItems = 0 ;
+        List<Cell> entry = new ArrayList<Cell>();
+        List<Student> studentList = new ArrayList<Student>();
+
+        try {
+
+            totalItems = adminService.getEntitySize(Constants.STUDENT_CLASS);
+            logger.debug("totalItems:"+totalItems);
+            studentList  = adminService.getPartialDataList(Utils.parseInteger(page), Utils.parseInteger(rp), qtype, query, sortname, sortorder,
+                    Constants.STUDENT_CLASS);
+
+            if(studentList != null) {
+                logger.debug("SMNLOG: studentList:"+ studentList.size()+" totalItems:"+totalItems);
+                jasonData.setPage(Utils.parseInteger(page));
+                for(Student student : studentList) {
+                    Cell cell = new Cell();
+
+                    logger.debug("SMNLOG:Student:"+student);
+//                    Map map = (Map) obj;
+
+                   /* student.setName(map.get("name") != null ? map.get("name").toString() : "");
+                    student.setFatherName(map.get("father_name") != null ? map.get("father_name").toString() : "");
+                    student.setMotherName(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
+                    student.set(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
+                    student.setMotherName(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
+                    student.setMotherName(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
+
+
+                    user.setRole(map.get("role") != null ? map.get("role").toString() : "");
+                    if(map.get("is_active") != null && ("true".equals(map.get("is_active").toString().trim()))) {
+                        user.setUserActiveCheckBoxHtml(Utils.getMessageBundlePropertyValue("user.selected.checkbox.html"));
+                    } else {
+                        user.setUserActiveCheckBoxHtml(Utils.getMessageBundlePropertyValue("user.not.selected.checkbox.html"));
+                    }
+                    user.setUserEditButtonHtml(Utils.getMessageBundlePropertyValue("user.edit.button.html"));
+                    user.setUserDeleteButtonHtml(Utils.getMessageBundlePropertyValue("user.delete.button.html"));*/
+
+                    cell.setId(student.getId());
+
+                    cell.setCell(student);
+                    entry.add(cell);
+                }
+                jasonData.setRows(entry);
+                jasonData.setTotal(totalItems);
+            } else {
+                logger.debug("No Student Found");
+            }
+        }catch (Exception ex) {
+            logger.debug("CERROR: Get Student List Exception : " + ex);
+        }
+
+        return jasonData;
+    }
 
 }

@@ -13,7 +13,7 @@
 
         <!-- ==================== COMMON ELEMENTS ROW ==================== -->
         <div class="row-fluid">
-            <div id="realtimeworkflowtableDiv" class="customFlexigridCss">
+            <div class="customFlexigridCss">
                 <table id="userTableId">
                 </table>
             </div>
@@ -25,18 +25,8 @@
 
     $(function () {
 
-        $.ajax({
-            url: 'admin111/testAjaxCall.html',
-            type: 'POST',
-            contentType: "application/json",
-            dataType: "json",
-            success: function(data){
-                console.log("SMNLOG:"+data);
-            }
-        });
-
         $("#userTableId").flexigrid({
-            url : 'admin/getUserJASON.html',
+            url : './getUserJSON.html',
             dataType : 'json',
             colModel : [ {
                 display : 'Name',

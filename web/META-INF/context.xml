@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!--<Context path="/testApp/">
-</Context>-->
-
-<Context path="/test-app" docBase="/home/amjad/test-app/build">
+<Context path="/testApp/">
 </Context>
+
+<!--
+<Context path="/test-app" docBase="/home/habib/PersonalProject/test-app/out/artifacts/test_app_war_exploded">
+</Context>-->

@@ -21,4 +21,7 @@ public interface AdminDao {
     void saveStudent(Student student) throws Exception;
 
     List<Standard> getAllStandardList() throws Exception;
+
+    List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String tableName) throws Exception;
+
 }

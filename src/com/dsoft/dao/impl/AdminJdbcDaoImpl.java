@@ -112,4 +112,32 @@ public List<Object> getPartialDataList(int page, int rp,  String qtype, String q
     return null;
 }
 
+    @Override
+    public List getPartialDataListWithJoinQuery(int page, int rp, String qtype, String query, String sortname, String sortorder, String className, String joinQuery) {
+        int start = (page - 1)*rp ;
+        String sql = "SELECT * ,"+className+".id "+className+"_id"
+                + " FROM " + className;
+
+        if(!Utils.isEmpty(joinQuery))
+            sql = sql+" "+joinQuery;
+
+        if(!Utils.isEmpty(query)) {
+            sql +=  " WHERE "+ qtype+" LIKE ?  LIMIT ?, ? ";
+        } else {
+            sql +=  " ORDER BY " + sortname + " "+ sortorder +" LIMIT ?, ? ";
+        }
+
+        List paramList = new ArrayList();
+        if(!Utils.isEmpty(query)) {
+            paramList.add("%"+query+"%");
+        }
+        paramList.add(start);
+        paramList.add(rp);
+        List list = jdbcTemplate.queryForList(sql, paramList.toArray());
+
+        if (list != null && list.size() > 0)
+            return list;
+        return null;
+    }
+
 }

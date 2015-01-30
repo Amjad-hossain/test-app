@@ -4,8 +4,8 @@
     <property name="app.name"      value="test-app"/>
     <property name="app.path"      value="/${app.name}"/>
     <property name="app.version"   value="0.1-dev"/>
-    <property name="build.home"    value="${basedir}/build"/>
-    <property name="catalina.home" value="/usr/tomcat7"/> <!-- UPDATE THIS! -->
+    <property name="build.home"    value="${basedir}/out/artifacts/test_app_war_exploded/"/>
+    <property name="catalina.home" value="/usr/apache-tomcat-7.0.54"/> <!-- UPDATE THIS! -->
     <property name="dist.home"     value="${basedir}/dist"/>
     <property name="docs.home"     value="${basedir}/dist/docs"/>
     <property name="manager.url"   value="http://localhost:8080/manager/text"/>

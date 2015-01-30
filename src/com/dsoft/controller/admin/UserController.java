@@ -285,22 +285,9 @@ public class UserController {  // to handle user related task
         return user;
     }
 
-
-    /*
-       * Method for cancel buttons action
-       * @param User user, HttpServletRequest request
-       * @return type String
-       */
-    @RequestMapping(value = "/*/testAjaxCall.html", method = RequestMethod.POST)
-    public @ResponseBody User testAjaxCall(HttpServletRequest request) {
-        String referrer = request.getHeader("referer");
-        logger.debug("Refferer :"+referrer);
-        return new User();
-    }
-
-    @RequestMapping(value = "/*/getUserJASON.html", method = RequestMethod.POST,produces = {"application/json"})
+    @RequestMapping(value = "/*/getUserJSON.html", method = RequestMethod.POST)
     public @ResponseBody JasonBean getControlList(HttpServletRequest request) {
-        logger.debug("User JASON controller");
+        logger.debug("User JSON controller");
         String  page = request.getParameter("page") != null ? request.getParameter("page") : "1";
         String rp = request.getParameter("rp") != null ? request.getParameter("rp") : "10";
         String sortname = request.getParameter("sortname") != null ? request.getParameter("sortname") : "assignment_size";

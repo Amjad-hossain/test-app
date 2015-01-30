@@ -8,4 +8,6 @@ import java.util.Map;
 public interface AdminJdbcDao {
 
     List getPartialDataList( int page, int rp , String  qtype, String query, String sortname, String sortorder, String className);
+
+    List getPartialDataListWithJoinQuery(int page, int rp, String qtype, String query, String sortname, String sortorder, String className, String joinQuery);
 }

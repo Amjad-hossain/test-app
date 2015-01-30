@@ -7,6 +7,7 @@ import com.dsoft.entity.User;
 import com.dsoft.service.AdminService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,9 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
 
     private static Logger logger = Logger.getLogger(AdminServiceImpl.class);
+
     @Autowired(required = true)
+    @Qualifier("adminDao")
     private AdminDao adminDao;
 
     @Override
@@ -52,6 +55,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<Standard> getAllStandardList() throws Exception {
         return adminDao.getAllStandardList();
+    }
+
+    @Override
+    public List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception {
+        return adminDao.getPartialDataList(page,rp,qtype,query,sortname,sortorder,className);
     }
 
 }

@@ -20,4 +20,6 @@ public interface AdminService {
     Student getStudent(String studentId) throws Exception;
     void saveStudent(Student profile) throws Exception;
     List<Standard> getAllStandardList() throws Exception;
+
+    List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception;
 }

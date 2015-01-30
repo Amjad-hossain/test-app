@@ -15,8 +15,8 @@ public class Standard{
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "standard_name")
+    private String standardName;
 
     @Column(name = "code")
     private String code;
@@ -32,12 +32,12 @@ public class Standard{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getStandardName() {
+        return standardName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStandardName(String standardName) {
+        this.standardName = standardName;
     }
 
     public String getCode() {
@@ -60,7 +60,7 @@ public class Standard{
     public String toString() {
         return "Standard{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", standardName='" + standardName + '\'' +
                 ", code='" + code + '\'' +
                 ", section='" + section + '\'' +
                 '}';

@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="student")
-public class Student extends AbstractBaseEntity {
+public class Student extends Profile {
 
 
     @ManyToOne
@@ -20,15 +20,17 @@ public class Student extends AbstractBaseEntity {
     @Column(name = "board_registration_no")
     private String boardRegistrationNo;
 
-    @ManyToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="profile_id")
-    private Profile profile;
+    @Column(name = "role_no")
+    private String roleNo;
 
     /*@Transient
     private MultipartFile fileData;*/
 
     @Transient
     private String binaryFileData;
+
+    @Transient
+    private String imgSrcHtml;
 
     @Transient
     private List<Standard> standardList;
@@ -49,12 +51,30 @@ public class Student extends AbstractBaseEntity {
         this.boardRegistrationNo = boardRegistrationNo;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public String getRoleNo() {
+        return roleNo;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setRoleNo(String roleNo) {
+        this.roleNo = roleNo;
+    }
+
+    @Override
+    public String getBinaryFileData() {
+        return binaryFileData;
+    }
+
+    @Override
+    public void setBinaryFileData(String binaryFileData) {
+        this.binaryFileData = binaryFileData;
+    }
+
+    public String getImgSrcHtml() {
+        return imgSrcHtml;
+    }
+
+    public void setImgSrcHtml(String imgSrcHtml) {
+        this.imgSrcHtml = imgSrcHtml;
     }
 
     public List<Standard> getStandardList() {
@@ -65,22 +85,15 @@ public class Student extends AbstractBaseEntity {
         this.standardList = standardList;
     }
 
-    public String getBinaryFileData() {
-        return binaryFileData;
-    }
-
-    public void setBinaryFileData(String binaryFileData) {
-        this.binaryFileData = binaryFileData;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
                 "standard=" + standard +
                 ", boardRegistrationNo='" + boardRegistrationNo + '\'' +
-                ", profile=" + profile +
-//                ", fileData=" + fileData +
+                ", roleNo='" + roleNo + '\'' +
                 ", binaryFileData='" + binaryFileData + '\'' +
+                ", imgSrcHtml='" + imgSrcHtml + '\'' +
+                ", standardList=" + standardList +
                 '}';
     }
 }
