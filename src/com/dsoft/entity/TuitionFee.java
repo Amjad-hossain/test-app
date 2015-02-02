@@ -13,51 +13,56 @@ import java.util.Date;
 @Table(name="tuition_fee")
 public class TuitionFee extends AbstractBaseEntity {
 
-    @Column(name = "payment_date")
-    private Date paymentDate;
+    @Column(name = "fee_type")
+    private String feeType;
 
-    private String paymentForMonth;
-    private String paymentMethod;
-    private Long paymentAmount;
-    private Long dueAmount;
+    private Double amount;
 
-    public Date getPaymentDate() {
-        return paymentDate;
+    @Column(name = "due_amount")
+    private Double dueAmount;
+
+    @Column(name = "effective_date")
+    private Date effectiveDate;
+
+    private Boolean flag;
+
+    public String getFeeType() {
+        return feeType;
     }
 
-    public void setPaymentDate(Date paymentDate) {
-        this.paymentDate = paymentDate;
+    public void setFeeType(String feeType) {
+        this.feeType = feeType;
     }
 
-    public String getPaymentForMonth() {
-        return paymentForMonth;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setPaymentForMonth(String paymentForMonth) {
-        this.paymentForMonth = paymentForMonth;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public Long getPaymentAmount() {
-        return paymentAmount;
-    }
-
-    public void setPaymentAmount(Long paymentAmount) {
-        this.paymentAmount = paymentAmount;
-    }
-
-    public Long getDueAmount() {
+    public Double getDueAmount() {
         return dueAmount;
     }
 
-    public void setDueAmount(Long dueAmount) {
+    public void setDueAmount(Double dueAmount) {
         this.dueAmount = dueAmount;
+    }
+
+    public Date getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    public void setEffectiveDate(Date effectiveDate) {
+        this.effectiveDate = effectiveDate;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
     }
 }

@@ -130,4 +130,32 @@ public class AdminDaoImpl implements AdminDao {
         }
         return null;
     }
+
+    @Override
+    public void setTuitionFee(TuitionFee tuitionFee) throws Exception {
+
+        hibernateTemplate.save(tuitionFee);
+    }
+
+    @Override
+    public List<TuitionFee> getTuitionFee(Date fromDate, Date toDate) throws Exception {
+
+        Session session = getSession();
+        StringBuffer sql = new StringBuffer();
+        sql.append("FROM TuitionFee");
+
+        if(fromDate != null) {
+            sql.append("WHERE effectiveDate >= :fromDate and effectiveDate <= :toDate ");
+        }
+        Query query = session.createQuery(sql.toString());
+        if(fromDate != null ) {
+            query.setParameter("fromDate ", fromDate);
+            if(toDate != null) {
+                query.setParameter("toDate ", toDate);
+            } else {
+                query.setParameter("toDate ", Utils.today());
+            }
+        }
+        return query.list();
+    }
 }

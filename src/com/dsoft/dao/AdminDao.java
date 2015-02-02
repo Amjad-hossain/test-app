@@ -1,9 +1,6 @@
 package com.dsoft.dao;
 
-import com.dsoft.entity.Profile;
-import com.dsoft.entity.Standard;
-import com.dsoft.entity.Student;
-import com.dsoft.entity.User;
+import com.dsoft.entity.*;
 
 import java.util.Date;
 import java.util.List;
@@ -23,5 +20,9 @@ public interface AdminDao {
     List<Standard> getAllStandardList() throws Exception;
 
     List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String tableName) throws Exception;
+
+    void setTuitionFee(TuitionFee tuitionFee) throws Exception;
+
+    List getTuitionFee(Date fromDate, Date toDate) throws Exception;
 
 }

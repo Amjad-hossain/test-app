@@ -1,9 +1,6 @@
 package com.dsoft.service;
 
-import com.dsoft.entity.Profile;
-import com.dsoft.entity.Standard;
-import com.dsoft.entity.Student;
-import com.dsoft.entity.User;
+import com.dsoft.entity.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.FileNotFoundException;
@@ -22,4 +19,10 @@ public interface AdminService {
     List<Standard> getAllStandardList() throws Exception;
 
     List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception;
+
+    void setTuitionFee(TuitionFee tuitionFee) throws Exception;
+
+    List<TuitionFee> getTuitionFee(Date fromDate, Date toDate) throws Exception;
+
+
 }
