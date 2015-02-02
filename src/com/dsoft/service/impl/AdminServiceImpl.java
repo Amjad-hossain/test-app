@@ -3,6 +3,7 @@ package com.dsoft.service.impl;
 import com.dsoft.dao.AdminDao;
 import com.dsoft.entity.Standard;
 import com.dsoft.entity.Student;
+import com.dsoft.entity.TuitionFee;
 import com.dsoft.entity.User;
 import com.dsoft.service.AdminService;
 import org.apache.log4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("adminService")
@@ -62,4 +64,13 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.getPartialDataList(page,rp,qtype,query,sortname,sortorder,className);
     }
 
+    @Override
+    public void setTuitionFee(TuitionFee tuitionFee) throws Exception {
+        adminDao.setTuitionFee(tuitionFee);
+    }
+
+    @Override
+    public List<TuitionFee> getTuitionFee(Date fromDate, Date toDate) throws Exception {
+        return adminDao.getTuitionFee(fromDate, toDate);
+    }
 }

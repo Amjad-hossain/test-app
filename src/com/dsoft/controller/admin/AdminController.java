@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Controller
-@SessionAttributes({"control", "holiday"})
+@SessionAttributes({"", ""})
 public class AdminController {
 
     private static Logger logger = Logger.getLogger(AdminController.class);
