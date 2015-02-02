@@ -17,7 +17,7 @@
         <ul class="dropdown-menu">
           <li><a tabindex="-1" href="./studentProfileView.html">Students Profile</a></li>
           <li><a tabindex="-1" href="./studentProfileList.html">Students</a></li>
-          <li><a tabindex="-1" href="form-wizard.html">WIZARD</a></li>
+          <li><a tabindex="-1" href="./testView.html">Test View</a></li>
         </ul>
       </li>
       <li class="divider-vertical"></li>

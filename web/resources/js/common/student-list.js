@@ -26,21 +26,27 @@ $(document).ready(function() {
             url : './getStudentJSON.html',
             dataType : 'json',
             colModel : [ {
+                display : 'Picture',
+                name : 'imgSrcHtml',
+                width : 50,
+                sortable : false,
+                align : 'center'
+            },{
                 display : 'Name',
                 name : 'name',
-                width : 200,
+                width : 180,
                 sortable : true,
                 align : 'left'
             }, {
                 display : 'Class',
-                name : 'code',
-                width : 100,
+                name : 'className',
+                width : 80,
                 sortable : true,
                 align : 'left'
             }, {
                 display : 'Roll No',
                 name : 'roleNo',
-                width : 100,
+                width : 60,
                 sortable : true,
                 align : 'left'
             }, {
@@ -56,15 +62,15 @@ $(document).ready(function() {
                 sortable : true,
                 align : 'left'
             }, {
-                display : 'date Of Birth',
-                name : 'dateOfBirth',
-                width : 50,
+                display : 'Date Of Birth',
+                name : 'dateOfBirthDateStr',
+                width : 100,
                 sortable : false,
                 align : 'center'
             }, {
-                display : '',
-                name : 'userDeleteButtonHtml',
-                width : 'auto',
+                display : 'Admission Date',
+                name : 'admissionDateStr',
+                width : 100,
                 sortable : false,
                 align : 'center'
             }, {
@@ -74,14 +80,6 @@ $(document).ready(function() {
                 hide : true,
                 align : 'center'
             }],
-            searchitems : [ {
-                display : 'Control',
-                name : 'name'
-            }, {
-                display : 'Transaction Type',
-                name : 'transactionType',
-                isdefault : true
-            } ],
             sortname : "name",
             sortorder : "asc",
             usepager : true,

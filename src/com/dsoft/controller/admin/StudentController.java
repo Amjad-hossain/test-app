@@ -66,6 +66,21 @@ public class StudentController {  // to handle user related task
     */
     @RequestMapping(value = "/*/studentProfileView.html", method = RequestMethod.GET)
     public String getStudentProfile(HttpServletRequest request, Model model) {
+        logger.debug("::Student Profile View Controller::");
+        String studentId =request.getParameter("studentId");
+
+        //@ModelAttribute("studentId") Long studentId,
+
+        logger.debug("::Student Id:"+studentId);
+        Student student = new Student();
+        try{
+            student = adminService.getStudent(studentId.toString());
+            model.addAttribute("student",student);
+
+        }catch (Exception e){
+
+        }
+
 
         return "common/studentProfile";
     }
@@ -77,10 +92,30 @@ public class StudentController {  // to handle user related task
     *
     */
     @RequestMapping(value = "/*/studentProfileList.html", method = RequestMethod.GET)
-    public String studentProfileListView(HttpServletRequest request, Model model) {
+    public String studentProfinleListView(HttpServletRequest request, Model model) {
 
         logger.debug("::Student Profile List View Controller::");
         return "common/studentProfileList";
+    }
+
+   /*
+    * Method for viewing landing Page
+    * @param HttpServletRequest request, Model model
+    * @return type String( or any .jsp File)
+    *
+    */
+    @RequestMapping(value = "/*/testView.html", method = RequestMethod.GET)
+    public String getTestView(HttpServletRequest request, Model model) {
+
+        logger.debug("::Test View Controller::");
+
+        Student student=new Student();
+        student.setName("Habib");
+        student.setFatherName("Habib Senior");
+        student.setMotherName("ABC");
+        model.addAttribute("student",student);
+        model.addAttribute("rony","i am rony");
+        return "common/testView";
     }
 
    /*
@@ -181,26 +216,16 @@ public class StudentController {  // to handle user related task
                 jasonData.setPage(Utils.parseInteger(page));
                 for(Student student : studentList) {
                     Cell cell = new Cell();
-
                     logger.debug("SMNLOG:Student:"+student);
-//                    Map map = (Map) obj;
 
-                   /* student.setName(map.get("name") != null ? map.get("name").toString() : "");
-                    student.setFatherName(map.get("father_name") != null ? map.get("father_name").toString() : "");
-                    student.setMotherName(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
-                    student.set(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
-                    student.setMotherName(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
-                    student.setMotherName(map.get("mother_name") != null ? map.get("mother_name").toString() : "");
+                    Date admissionDate = student.getCreated() != null ? student.getCreated() : new Date();
+                    Date dof = student.getDateOfBirth() != null ? student.getDateOfBirth() : new Date();
+                    student.setAdmissionDateStr(Utils.dateToStrWithFormat(admissionDate, Constants.MONTH_DAY_YEAR));
+                    student.setDateOfBirthDateStr(Utils.dateToStrWithFormat(dof, Constants.MONTH_DAY_YEAR));
+                    student.setImgSrcHtml("<img class='tableImgView' src='"+student.getPhotoPath()+"'>");
+                    student.setClassName(student.getStandard().getCode());
 
 
-                    user.setRole(map.get("role") != null ? map.get("role").toString() : "");
-                    if(map.get("is_active") != null && ("true".equals(map.get("is_active").toString().trim()))) {
-                        user.setUserActiveCheckBoxHtml(Utils.getMessageBundlePropertyValue("user.selected.checkbox.html"));
-                    } else {
-                        user.setUserActiveCheckBoxHtml(Utils.getMessageBundlePropertyValue("user.not.selected.checkbox.html"));
-                    }
-                    user.setUserEditButtonHtml(Utils.getMessageBundlePropertyValue("user.edit.button.html"));
-                    user.setUserDeleteButtonHtml(Utils.getMessageBundlePropertyValue("user.delete.button.html"));*/
 
                     cell.setId(student.getId());
 

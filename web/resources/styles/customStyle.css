@@ -16,13 +16,13 @@
     margin-left: 0px !important;
 
 }
-.customFlexigridCss select{
-    /*background-color : transparent;*/
+/*.customFlexigridCss select{
+    *//*background-color : transparent;*//*
     broder : not ;
     width : auto;
 }
 .customFlexigridCss select, input[type="file"]{
-    /*height: auto;*/
+    *//*height: auto;*//*
     line-height: normal;
 }
 .customFlexigridCss select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
@@ -31,11 +31,11 @@
     font-size: medium;
 
     padding: 0;
-    /*background: transparent;*/
+    *//*background: transparent;*//*
     border-radius: 4px;
     vertical-align: baseline;
     box-shadow: none;
-    /*height: auto;*/
+    *//*height: auto;*//*
     line-height: normal;
 
 }
@@ -52,4 +52,30 @@
 }
 .customFlexigridCss  .sDiv2 select , .customFlexigridCss  .pGroup select {
     height: 20px;
+}*/
+.flexigrid .bDiv *{
+font-size: 12px;
+}
+.flexigrid .hDivBox table thead tr th div{
+    font-size: 13px;
+}
+
+.flexigrid .pGroup .rp{
+height: 26px;
+}
+.tableImgView{
+    width: 22px;
+}
+
+.borderDiv{
+    background-color: #f9f9f9;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+
+}
+.infoShowDiv{
+    width: 90%;
 }

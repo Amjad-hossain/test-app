@@ -33,7 +33,16 @@ public class Student extends Profile {
     private String imgSrcHtml;
 
     @Transient
+    private String admissionDateStr;
+
+    @Transient
+    private String dateOfBirthDateStr;
+
+    @Transient
     private List<Standard> standardList;
+
+    @Transient
+    private String className;
 
     public Standard getStandard() {
         return standard;
@@ -83,6 +92,30 @@ public class Student extends Profile {
 
     public void setStandardList(List<Standard> standardList) {
         this.standardList = standardList;
+    }
+
+    public String getAdmissionDateStr() {
+        return admissionDateStr;
+    }
+
+    public void setAdmissionDateStr(String admissionDateStr) {
+        this.admissionDateStr = admissionDateStr;
+    }
+
+    public String getDateOfBirthDateStr() {
+        return dateOfBirthDateStr;
+    }
+
+    public void setDateOfBirthDateStr(String dateOfBirthDateStr) {
+        this.dateOfBirthDateStr = dateOfBirthDateStr;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     @Override
