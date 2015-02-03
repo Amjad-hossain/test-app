@@ -1,8 +1,6 @@
 package com.dsoft.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -25,6 +23,10 @@ public class TuitionFee extends AbstractBaseEntity {
     private Date effectiveDate;
 
     private Boolean flag;
+
+    @ManyToOne
+    @JoinColumn(name="standard_id")
+    private Standard standard;
 
     public String getFeeType() {
         return feeType;
@@ -64,5 +66,13 @@ public class TuitionFee extends AbstractBaseEntity {
 
     public void setFlag(Boolean flag) {
         this.flag = flag;
+    }
+
+    public Standard getStandard() {
+        return standard;
+    }
+
+    public void setStandard(Standard standard) {
+        this.standard = standard;
     }
 }
