@@ -20,9 +20,10 @@ public interface AdminService {
 
     List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception;
 
-    void setTuitionFee(TuitionFee tuitionFee) throws Exception;
+    void updateTuitionFee(TuitionFee tuitionFee) throws Exception;
+
+    void saveTuitionFee(List<TuitionFee> tuitionFee) throws Exception;
 
     List<TuitionFee> getTuitionFee(Date fromDate, Date toDate) throws Exception;
-
 
 }

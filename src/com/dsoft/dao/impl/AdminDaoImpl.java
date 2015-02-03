@@ -131,11 +131,7 @@ public class AdminDaoImpl implements AdminDao {
         return null;
     }
 
-    @Override
-    public void setTuitionFee(TuitionFee tuitionFee) throws Exception {
 
-        hibernateTemplate.save(tuitionFee);
-    }
 
     @Override
     public List<TuitionFee> getTuitionFee(Date fromDate, Date toDate) throws Exception {
@@ -157,5 +153,18 @@ public class AdminDaoImpl implements AdminDao {
             }
         }
         return query.list();
+    }
+
+    @Override
+    public void updateTuitionFee(TuitionFee tuitionFee) throws Exception {
+        hibernateTemplate.update(tuitionFee);
+    }
+
+    @Override
+    public void saveTuitionFee(List<TuitionFee> tuitionFees) throws Exception {
+
+        for(TuitionFee tuitionFee : tuitionFees) {
+            hibernateTemplate.save(tuitionFee);
+        }
     }
 }

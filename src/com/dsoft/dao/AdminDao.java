@@ -21,8 +21,10 @@ public interface AdminDao {
 
     List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String tableName) throws Exception;
 
-    void setTuitionFee(TuitionFee tuitionFee) throws Exception;
-
     List getTuitionFee(Date fromDate, Date toDate) throws Exception;
+
+    void updateTuitionFee(TuitionFee tuitionFee) throws Exception;
+
+    void saveTuitionFee(List<TuitionFee> tuitionFee) throws Exception;
 
 }

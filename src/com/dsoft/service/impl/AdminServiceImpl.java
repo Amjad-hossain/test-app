@@ -65,8 +65,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void setTuitionFee(TuitionFee tuitionFee) throws Exception {
-        adminDao.setTuitionFee(tuitionFee);
+    public void updateTuitionFee(TuitionFee tuitionFee) throws Exception {
+        adminDao.updateTuitionFee(tuitionFee);
+    }
+
+    @Override
+    public void saveTuitionFee(List<TuitionFee> tuitionFee) throws Exception {
+        adminDao.saveTuitionFee(tuitionFee);
     }
 
     @Override
