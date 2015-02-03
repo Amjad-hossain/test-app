@@ -15,7 +15,7 @@ $(document).ready(function() {
     $(".standard").attr('data-required','true');
 
     /*Date initialization */
-    $('#dateOfBirth').datepicker({ format: 'dd-mm-yyyy'});
+    $('#dateOfBirth').datepicker({ format: globalDateFormat});
     $('#studentForm').parsley({
 
     });

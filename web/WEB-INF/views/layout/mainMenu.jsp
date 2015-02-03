@@ -29,7 +29,14 @@
         </ul>
       </li>
       <li class="divider-vertical"></li>
-      <li id="buttonsIcons"><a href="buttons.html"><i class="icon-tint"></i> BUTTONS & ICONS</a></li>
+      <li class="dropdown active">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" ><i class="icon-pencil"></i> Admin Panel <span class="label label-pressed">2</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="./upsertTuitionFees.html"><spring:message code="tuition.fees" /></a></li>
+          <%--<li><a tabindex="-1" href="typography.html">TYPOGRAPHY</a></li>--%>
+        </ul>
+      </li>
+
       <li class="divider-vertical"></li>
       <li id="gridLayout"><a href="grid.html"><i class="icon-th"></i> GRID LAYOUT</a></li>
       <li class="divider-vertical"></li>

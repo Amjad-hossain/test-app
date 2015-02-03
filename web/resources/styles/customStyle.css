@@ -79,3 +79,17 @@ height: 26px;
 .infoShowDiv{
     width: 90%;
 }
+.table{
+font-size: 12px !important;
+}
+.crossIcon{
+    width: 23px;
+    cursor: pointer;
+}
+.addIcon{
+    width: 27px;
+    cursor: pointer;
+}
+.alert{
+    margin-bottom: 5px !important;
+}
