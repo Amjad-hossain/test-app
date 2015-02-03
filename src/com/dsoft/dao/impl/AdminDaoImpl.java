@@ -167,4 +167,9 @@ public class AdminDaoImpl implements AdminDao {
             hibernateTemplate.save(tuitionFee);
         }
     }
+
+    @Override
+    public List<TuitionFeeType> getTuitionFeeType() throws Exception {
+        return hibernateTemplate.find("FROM TuitionFeeType");
+    }
 }

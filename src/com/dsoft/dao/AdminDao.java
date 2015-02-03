@@ -27,4 +27,6 @@ public interface AdminDao {
 
     void saveTuitionFee(List<TuitionFee> tuitionFee) throws Exception;
 
+    List<TuitionFeeType> getTuitionFeeType()throws Exception;
+
 }

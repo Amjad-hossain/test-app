@@ -1,10 +1,7 @@
 package com.dsoft.service.impl;
 
 import com.dsoft.dao.AdminDao;
-import com.dsoft.entity.Standard;
-import com.dsoft.entity.Student;
-import com.dsoft.entity.TuitionFee;
-import com.dsoft.entity.User;
+import com.dsoft.entity.*;
 import com.dsoft.service.AdminService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,5 +74,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<TuitionFee> getTuitionFee(Date fromDate, Date toDate) throws Exception {
         return adminDao.getTuitionFee(fromDate, toDate);
+    }
+
+    @Override
+    public List<TuitionFeeType> getTuitionFeeType() throws Exception {
+        return adminDao.getTuitionFeeType();
     }
 }

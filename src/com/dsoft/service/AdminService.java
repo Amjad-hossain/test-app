@@ -26,4 +26,6 @@ public interface AdminService {
 
     List<TuitionFee> getTuitionFee(Date fromDate, Date toDate) throws Exception;
 
+    List<TuitionFeeType> getTuitionFeeType() throws Exception;
+
 }
