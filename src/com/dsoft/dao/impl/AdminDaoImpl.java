@@ -175,6 +175,12 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public TuitionFee getTuitionFee(long id) throws Exception {
-        return hibernateTemplate.load(TuitionFee.class, id);
+
+        Session session = getSession();
+        Query query = session.createQuery("FROM TuitionFee WHERE id = :id");
+        Object object = query.uniqueResult();
+        if(object != null)
+            return (TuitionFee) object;
+        return null;
     }
 }
