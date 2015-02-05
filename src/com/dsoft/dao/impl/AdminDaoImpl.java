@@ -96,7 +96,7 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception {
+    public List getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception {
         Session session = getSession();
         int start = (page - 1)*rp ;
         String sql = " FROM " + className;
@@ -122,7 +122,7 @@ public class AdminDaoImpl implements AdminDao {
 
 //        logger.debug("SMNLOG:Sql"+queryObj.getQueryString());
 
-        List<Student> list = queryObj.list();
+        List list = queryObj.list();
 
         if (list != null && list.size() > 0)    {
             return list;
@@ -178,6 +178,7 @@ public class AdminDaoImpl implements AdminDao {
 
         Session session = getSession();
         Query query = session.createQuery("FROM TuitionFee WHERE id = :id");
+        query.setParameter("id",id);
         Object object = query.uniqueResult();
         if(object != null)
             return (TuitionFee) object;

@@ -19,7 +19,7 @@ public interface AdminDao {
 
     List<Standard> getAllStandardList() throws Exception;
 
-    List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String tableName) throws Exception;
+    List getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String tableName) throws Exception;
 
     List getTuitionFee(Date fromDate, Date toDate) throws Exception;
 

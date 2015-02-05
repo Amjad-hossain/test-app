@@ -31,6 +31,18 @@ public class TuitionFee extends AbstractBaseEntity {
 
     @Transient
     List<TuitionFee> tuitionFeeList;
+    @Transient
+    String effDateStr;
+    @Transient
+    String editBtnHtml;
+    @Transient
+    String disableBtnHtml;
+    @Transient
+    String standardStr;
+    @Transient
+    String enableOrDisableHtml;
+
+
 
     public String getFeeType() {
         return feeType;
@@ -88,6 +100,46 @@ public class TuitionFee extends AbstractBaseEntity {
         this.tuitionFeeList = tuitionFeeList;
     }
 
+    public String getEffDateStr() {
+        return effDateStr;
+    }
+
+    public void setEffDateStr(String effDateStr) {
+        this.effDateStr = effDateStr;
+    }
+
+    public String getEditBtnHtml() {
+        return editBtnHtml;
+    }
+
+    public void setEditBtnHtml(String editBtnHtml) {
+        this.editBtnHtml = editBtnHtml;
+    }
+
+    public String getDisableBtnHtml() {
+        return disableBtnHtml;
+    }
+
+    public void setDisableBtnHtml(String disableBtnHtml) {
+        this.disableBtnHtml = disableBtnHtml;
+    }
+
+    public String getStandardStr() {
+        return standardStr;
+    }
+
+    public void setStandardStr(String standardStr) {
+        this.standardStr = standardStr;
+    }
+
+    public String getEnableOrDisableHtml() {
+        return enableOrDisableHtml;
+    }
+
+    public void setEnableOrDisableHtml(String enableOrDisableHtml) {
+        this.enableOrDisableHtml = enableOrDisableHtml;
+    }
+
     @Override
     public String toString() {
         return "TuitionFee{" +
@@ -98,6 +150,11 @@ public class TuitionFee extends AbstractBaseEntity {
                 ", flag=" + flag +
                 ", standard=" + standard +
                 ", tuitionFeeList=" + tuitionFeeList +
+                ", effDateStr='" + effDateStr + '\'' +
+                ", editBtnHtml='" + editBtnHtml + '\'' +
+                ", disableBtnHtml='" + disableBtnHtml + '\'' +
+                ", standardStr='" + standardStr + '\'' +
+                ", enableOrDisableHtml='" + enableOrDisableHtml + '\'' +
                 '}';
     }
 }

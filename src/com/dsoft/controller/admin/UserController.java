@@ -322,8 +322,8 @@ public class UserController {  // to handle user related task
                     user.setUserEditButtonHtml(Utils.getMessageBundlePropertyValue("user.edit.button.html"));
                     user.setUserDeleteButtonHtml(Utils.getMessageBundlePropertyValue("user.delete.button.html"));
 
-                    user.setId(map.get("id") != null ? ((Number)map.get("id")).intValue() : 0 );
-                    cell.setId(map.get("id") != null ? ((Number)map.get("id")).intValue() : 0 );
+                    user.setId(map.get("id") != null ? ((Number)map.get("id")).intValue() : 0l );
+                    cell.setId(map.get("id") != null ? ((Number)map.get("id")).intValue() : 0l );
 
                     cell.setCell(user);
                     entry.add(cell);

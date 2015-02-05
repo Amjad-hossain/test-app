@@ -23,7 +23,7 @@ public abstract class AbstractBaseEntity implements Lifecycle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "created")
     @Temporal(TemporalType.TIMESTAMP)
@@ -63,11 +63,11 @@ public abstract class AbstractBaseEntity implements Lifecycle {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

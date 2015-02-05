@@ -4,8 +4,25 @@
 
 $(document).ready(function() {
 
+    /* in edit mode */
+    if($("#tuitionFeeId").val() && $("#tuitionFeeId").val() > 0){
+        console.log("SMNLOG:You are in edit mode");
+        $(".standardSelect,.feeTypeSelect").attr('data-required','true');
+        $(".amount").attr('data-required','true').attr('data-type',"number");
+        $(".effectiveDate").attr('data-type','dateIso').attr('placeholder',globalDateFormat).attr('data-required','true');
+
+        $(".effectiveDate").datepicker({ format: globalDateFormat});
+        $('#tuitionFeeForm').parsley({});
+
+
+    }
+    /* edit mode end*/
+
     $('.submitBtn').click(function(){
-        $('#tuitionFeeForm').parsley().destroy();
+        if(!$("#tuitionFeeId").val()){
+            $('#tuitionFeeForm').parsley().destroy();//this is when not in edit mode
+        }
+
     });
 
     var feeType = '<td><select data-required="true"  class="span10 parsley-validated">'+$("#feeTypeSelect").html()+'</select></td>';

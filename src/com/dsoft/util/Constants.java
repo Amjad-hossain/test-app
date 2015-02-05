@@ -11,4 +11,6 @@ public class Constants {
     public static final String STUDENT_TABLE="student";
     public static final String STUDENT_TABLE_JOIN_WITH_PROFILE_QUERY="LEFT JOIN standard ON(student.standard_id = standard.id)";
     public static final String MONTH_DAY_YEAR="MM/dd/yyyy";
+    public static final String TUITION_FEE_CLASS="TuitionFee";
+    public static final String TUITION_FEE_TABLE="tuition_fee";
 }

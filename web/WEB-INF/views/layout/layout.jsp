@@ -73,6 +73,8 @@
     <%--<script src="<%= contextPath %>/resources/js/validation/bootstrapValidator.min.js"  type="text/javascript"></script>--%>
     <script src="<%= contextPath %>/resources/js/common/util.js"  type="text/javascript"></script>
 
+    <script src="<%= contextPath %>/resources/js/bootbox.min.js"  type="text/javascript"></script>
+
 </head>
 <body id="ipboard_body" class="commonForm wysihtml5-supported">
 

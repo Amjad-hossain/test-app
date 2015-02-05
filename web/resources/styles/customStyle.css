@@ -93,3 +93,16 @@ font-size: 12px !important;
 .alert{
     margin-bottom: 5px !important;
 }
+.modal-header .close{
+    padding: 16px;
+}
+.modal-header{
+    border-radius:10px 10px 0 0;
+}
+.modal-footer{
+    border-radius:0 0 10px 10px;
+}
+.createNewBtnWrapperDiv{
+    text-align: right;
+    padding: 5px;
+}

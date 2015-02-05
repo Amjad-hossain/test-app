@@ -57,7 +57,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Student> getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception {
+    public List getPartialDataList(int page, int rp, String qtype, String query, String sortname, String sortorder, String className) throws Exception {
         return adminDao.getPartialDataList(page,rp,qtype,query,sortname,sortorder,className);
     }
 
