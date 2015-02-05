@@ -28,4 +28,6 @@ public interface AdminService {
 
     List<TuitionFeeType> getTuitionFeeType() throws Exception;
 
+    TuitionFee getTuitionFee(long id) throws Exception;
+
 }

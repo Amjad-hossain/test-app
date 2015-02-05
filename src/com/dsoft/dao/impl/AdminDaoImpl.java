@@ -172,4 +172,9 @@ public class AdminDaoImpl implements AdminDao {
     public List<TuitionFeeType> getTuitionFeeType() throws Exception {
         return hibernateTemplate.find("FROM TuitionFeeType");
     }
+
+    @Override
+    public TuitionFee getTuitionFee(long id) throws Exception {
+        return hibernateTemplate.load(TuitionFee.class, id);
+    }
 }

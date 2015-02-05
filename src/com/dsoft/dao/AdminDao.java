@@ -29,4 +29,5 @@ public interface AdminDao {
 
     List<TuitionFeeType> getTuitionFeeType()throws Exception;
 
+    TuitionFee getTuitionFee(long id) throws Exception;
 }

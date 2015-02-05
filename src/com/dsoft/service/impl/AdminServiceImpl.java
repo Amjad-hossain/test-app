@@ -80,4 +80,11 @@ public class AdminServiceImpl implements AdminService {
     public List<TuitionFeeType> getTuitionFeeType() throws Exception {
         return adminDao.getTuitionFeeType();
     }
+
+    @Override
+    public TuitionFee getTuitionFee(long id) throws Exception {
+        return adminDao.getTuitionFee(id);
+    }
+
+
 }
