@@ -3,10 +3,7 @@ package com.dsoft.controller.admin;
 
 import com.dsoft.bean.Cell;
 import com.dsoft.bean.JasonBean;
-import com.dsoft.entity.Profile;
-import com.dsoft.entity.Standard;
-import com.dsoft.entity.Student;
-import com.dsoft.entity.User;
+import com.dsoft.entity.*;
 import com.dsoft.service.AdminJdbcService;
 import com.dsoft.service.AdminService;
 import com.dsoft.util.Constants;
@@ -143,6 +140,67 @@ public class StudentController {  // to handle user related task
         student.setStandardList(standardList);
         model.addAttribute("student",student);
         return "common/studentRegistration";
+    }
+
+    /*
+    * Method for viewing landing Page
+    * @param HttpServletRequest request, Model model
+    * @return type String( or any .jsp File)
+    *
+    */
+    @RequestMapping(value = "/*/upsertTuitionFees.html", method = RequestMethod.GET)
+    public String upsertTuitionFees(HttpServletRequest request, Model model) {
+
+        logger.debug("::Student Tuition Fees Controller::");
+
+        TuitionFee tuitionFee = new TuitionFee();
+        List<TuitionFee> tuitionFeeList = new ArrayList<TuitionFee>();
+        List<Standard> standardList = new ArrayList<Standard>();
+        List<TuitionFeeType> tuitionFeeTypeList = new ArrayList<TuitionFeeType>();
+
+
+        try {
+            standardList = adminService.getAllStandardList();
+            tuitionFeeTypeList = adminService.getTuitionFeeType();
+            tuitionFee.setTuitionFeeList(tuitionFeeList);
+            logger.debug("SMNLOG:standardList:"+standardList.size());
+        } catch (Exception e) {
+            logger.debug("ERROR:"+e);
+        }
+
+        model.addAttribute("standardList",standardList);
+        model.addAttribute("tuitionFeeTypeList",tuitionFeeTypeList);
+        model.addAttribute("tuitionFee",tuitionFee);
+        return "common/upsertTuitionFees";
+    }
+
+    /*
+    * Method for viewing landing Page
+    * @param HttpServletRequest request, Model model
+    * @return type String( or any .jsp File)
+    *
+    */
+    @RequestMapping(value = "/*/upsertTuitionFees.html", method = RequestMethod.POST)
+    public String upsertTuitionFees(HttpServletRequest request, @ModelAttribute("tuitionFee") TuitionFee tuitionFee, Model model) {
+
+        logger.debug("::Student Tuition Fees Controller POST::");
+
+
+        try {
+
+            logger.debug("SMNLOG:standardList:"+tuitionFee);
+            if(tuitionFee != null){
+                if(tuitionFee.getTuitionFeeList() != null)
+                logger.debug("SMNLOG:standardList:"+tuitionFee.getTuitionFeeList());
+                adminService.saveTuitionFee(tuitionFee.getTuitionFeeList());
+                Utils.setGreenMessage(request, Utils.getMessageBundlePropertyValue("student.tuition.fees.save.success.msg"));
+            }
+
+        } catch (Exception e) {
+            logger.debug("ERROR:"+e);
+            Utils.setGreenMessage(request, Utils.getMessageBundlePropertyValue("student.tuition.fees.save.error.msg"));
+        }
+        return "redirect:./upsertTuitionFees.html";
     }
 
     /*

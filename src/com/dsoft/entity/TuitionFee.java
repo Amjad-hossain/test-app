@@ -2,6 +2,7 @@ package com.dsoft.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by amjad on 20/1/15.
@@ -27,6 +28,9 @@ public class TuitionFee extends AbstractBaseEntity {
     @ManyToOne
     @JoinColumn(name="standard_id")
     private Standard standard;
+
+    @Transient
+    List<TuitionFee> tuitionFeeList;
 
     public String getFeeType() {
         return feeType;
@@ -74,5 +78,26 @@ public class TuitionFee extends AbstractBaseEntity {
 
     public void setStandard(Standard standard) {
         this.standard = standard;
+    }
+
+    public List<TuitionFee> getTuitionFeeList() {
+        return tuitionFeeList;
+    }
+
+    public void setTuitionFeeList(List<TuitionFee> tuitionFeeList) {
+        this.tuitionFeeList = tuitionFeeList;
+    }
+
+    @Override
+    public String toString() {
+        return "TuitionFee{" +
+                "feeType='" + feeType + '\'' +
+                ", amount=" + amount +
+                ", dueAmount=" + dueAmount +
+                ", effectiveDate=" + effectiveDate +
+                ", flag=" + flag +
+                ", standard=" + standard +
+                ", tuitionFeeList=" + tuitionFeeList +
+                '}';
     }
 }
